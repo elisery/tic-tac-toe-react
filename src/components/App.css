@@ -1,0 +1,105 @@
+html {
+  font-size: 16px;
+  font-family: 'Indie Flower', cursive;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+/* Universal Styles */
+.main-shadow {
+  -webkit-box-shadow: 4px 10px 25px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 10px 25px 2px rgba(0,0,0,0.75);
+  box-shadow: 4px 10px 25px 2px rgba(0,0,0,0.75);
+}
+
+h2 {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  color: white;
+}
+
+/* Main layout */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  padding-top: 7%;
+}
+
+.board {
+  width: 24rem;
+  height: 26rem;
+  background-color: #DEB887;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5%;
+}
+
+/*Status*/
+.status {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+  height: 2.5rem;
+}
+
+#player1-turn {
+  background-color: #00CED1;
+}
+
+#player2-turn {
+  background-color: #B22222;
+}
+
+#computer-turn {
+  background-color: #7B68EE;
+}
+
+/*Top board controls & scores*/
+.settings {
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scores {
+  margin-left: 2rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  color: #2F4F4F;
+}
+
+#score1, #score1num, #score2, #score2num {
+  display: inline;
+}
+
+.controls {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.3rem;
+  color: #2F4F4F;
+}
