@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Board from './Board';
 import Status from './Status';
 
-class Game extends Component {
+class GameLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,4 +20,4 @@ class Game extends Component {
   }
 }
 
-export default Game;
+export default GameLayout;
