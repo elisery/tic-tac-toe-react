@@ -11,28 +11,28 @@ class PlayBoard extends Component {
   render() {
     return(
       <div className="play-area chalkboard">
-        <div id="row-1" class="row bottom-border">
-          <div id="0" class="top-right-border square">
+        <div id="row-1" className="row bottom-border">
+          <div id="0" className="top-right-border square">
           </div>
-          <div id="1" class="top-right-border square">
+          <div id="1" className="top-right-border square">
           </div>
-          <div id="2" class="top-right-corner square">
-          </div>
-        </div>
-        <div id="row-2" class="row bottom-border">
-          <div id="3" class="right-border square">
-          </div>
-          <div id="4" class="right-border square">
-          </div>
-          <div id="5" class="square">
+          <div id="2" className="top-right-corner square">
           </div>
         </div>
-        <div id="row-3" class="row">
-          <div id="6" class="bottom-right-border square">
+        <div id="row-2" className="row bottom-border">
+          <div id="3" className="right-border square">
           </div>
-          <div id="7" class="bottom-right-border square">
+          <div id="4" className="right-border square">
           </div>
-          <div id="8" class="bottom-right-corner square">
+          <div id="5" className="square">
+          </div>
+        </div>
+        <div id="row-3" className="row">
+          <div id="6" className="bottom-right-border square">
+          </div>
+          <div id="7" className="bottom-right-border square">
+          </div>
+          <div id="8" className="bottom-right-corner square">
           </div>
         </div>
       </div>

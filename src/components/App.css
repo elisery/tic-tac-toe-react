@@ -17,6 +17,7 @@ h2 {
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.7);
   text-align: center;
+  margin: 0.8rem;
 }
 
 h3 {
@@ -156,3 +157,59 @@ button {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Choose Player - Intro screen */
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  font-family: 'Indie Flower', cursive;
+}
+
+.options {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 2.5rem 1rem 2.5rem;
+}
+
+.player-choice {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  border-style: dashed;
+}
+
+.player-choice:hover {
+  color: white;
+}
+
+/*Token Selection*/
+.token-choice {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 3.5rem;
+}
+
+#two-player-message {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+#back {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Roboto', sans-serif;
+  border-style: dashed;
+}
+
+#back:hover {
+  color: white;
+}
+
+#x-token:hover {
+  border: 1px dashed white;
+}
+
+#o-token:hover {
+  border: 0.1px dashed white;
+}
