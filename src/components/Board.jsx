@@ -8,7 +8,8 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      gameType: '',
+      playerOneToken: ''
     }
   }
   /*
@@ -22,7 +23,7 @@ class Board extends Component {
     return(
       <div className="board main-shadow">
         <Settings />
-        <TokenChoice />
+        <ChoosePlayer />
       </div>
     )
   }
