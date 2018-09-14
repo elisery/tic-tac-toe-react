@@ -1,5 +1,7 @@
 # Tic Tac React
 
+<img src="public/xox.png" width="200" />
+
 This is a web application of the classic game, Tic Tac Toe built with React.
 
 CURRENTLY UNDER CONSTRUCTION
