@@ -11,6 +11,10 @@ class Board extends Component {
       gameType: '',
       playerOneToken: ''
     }
+    this.playerChoice = this.playerChoice.bind(this);
+  }
+  playerChoice() {
+    console.log(id);
   }
   /*
   1. if no player choice set render player choice screen ChoosePlayer
@@ -23,7 +27,7 @@ class Board extends Component {
     return(
       <div className="board main-shadow">
         <Settings />
-        <ChoosePlayer />
+        <ChoosePlayer onChoiceClick={this.playerChoice} />
       </div>
     )
   }
