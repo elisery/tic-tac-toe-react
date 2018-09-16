@@ -10,8 +10,8 @@ const ChoosePlayer = props => {
         <h2>How do you want to play?</h2>
       </div>
       <div className="options">
-        <button onClick={() => onChoiceClick()} className="player-choice" id="1-player">1 Player</button>
-        <button onClick={() => onChoiceClick()} className="player-choice" id="2-player">2 Players</button>
+        <button onClick={() => onChoiceClick("1-player")} className="player-choice" id="1-player">1 Player</button>
+        <button onClick={() => onChoiceClick("2-player")} className="player-choice" id="2-player">2 Players</button>
       </div>
     </div>
   )
