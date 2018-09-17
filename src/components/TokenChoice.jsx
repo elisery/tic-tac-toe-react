@@ -1,30 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 
-class TokenChoice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const TokenChoice = props =>{
+  const { onTokenClick = () => {} } = props;
 
-    }
-  }
-  
-  render() {
-    return(
-      <div class="token-select chalkboard">
-        <div class="message">
-          <h2 id="two-player-message">Player 1</h2>
-          <h2>Are you an X or an O?</h2>
-        </div>
-        <div class="options">
-          <button class="token-choice" id="x-token">X</button>
-          <button class="token-choice" id="o-token">O</button>
-        </div>
-        <div class="options">
-          <button id="back"> &lt;- back</button>
-        </div>
+  return(
+    <div className="token-select chalkboard">
+      <div className="message">
+        <h2 id="two-player-message">Player 1</h2>
+        <h2>Are you an X or an O?</h2>
       </div>
-    )
-  }
+      <div className="options">
+        <button onClick={() => onTokenClick('x-token')} className="token-choice" id="x-token">X</button>
+        <button onClick={() => onTokenClick('o-token')} className="token-choice" id="o-token">O</button>
+      </div>
+      <div className="options">
+        <button id="back"> &lt;- back</button>
+      </div>
+    </div>
+  )
+  
 }
 
 export default TokenChoice;
