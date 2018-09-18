@@ -23,6 +23,11 @@ class Screens extends Component {
   1. if no player choice set render player choice screen ChoosePlayer
   2. next if no x or o choice set render token choice screen TokenChoice
   3. else render PlayBoard
+
+  RESET problem
+  - pass states as props again, to Board component and call functions there
+    instead of in Screens 
+  - question: in Board, can you call three diff functions in one Screens component?
   */
 
   tokenChoice(option) {
