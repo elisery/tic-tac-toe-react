@@ -11,13 +11,15 @@ class Board extends Component {
     }
   }
   
+  resetGame() {
+
+  }
 
   render() {
     
-    
     return (
       <div className="board main-shadow">
-        <Settings />
+        <Settings onResetClick={this.resetGame}/>
         <Screens />
         
       </div>

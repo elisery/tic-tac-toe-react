@@ -1,24 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import Scoreboard from './Scoreboard';
 
-class Settings extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-  render() {
-    return(
-      <div className="settings">
-        <Scoreboard />
-        {/* Reset button */}
-        <div className="controls">
-          <button id="reset">Reset</button>
-        </div>
+const Settings = props => {
+  const { onResetClick = () => {} } = props;
+ 
+  return(
+    <div className="settings">
+      <Scoreboard />
+      <div className="controls">
+        <button onClick={() => onResetClick()} id="reset">Reset</button>
       </div>
-    )
-  }
+    </div>
+  )
+  
 }
 
 export default Settings;
