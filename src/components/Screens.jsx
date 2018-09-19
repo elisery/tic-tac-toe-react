@@ -28,6 +28,8 @@ class Screens extends Component {
   - pass states as props again, to Board component and call functions there
     instead of in Screens 
   - question: in Board, can you call three diff functions in one Screens component?
+    - or call one function and within that function decide what state to set based
+      on props passed
   */
 
   tokenChoice(option) {
