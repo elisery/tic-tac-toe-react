@@ -7,21 +7,23 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      reset: false
     }
-    this.resetGame = this.resetGame.bind(this);
+    this.setResetStatus = this.setResetStatus.bind(this);
   }
   
-  resetGame() {
-   
+  setResetStatus() {
+    this.state.reset ? this.setState({ reset: false }): this.setState({ reset: true });
+    
+    console.log(this.state.reset)
   }
 
   render() {
-    
+    const { reset } = this.state;
     return (
       <div className="board main-shadow">
-        <Settings onResetClick={this.resetGame}/>
-        <Screens />
+        <Settings onResetClick={this.setResetStatus}/>
+        <Screens resetStatus={reset}/>
         
       </div>
     )

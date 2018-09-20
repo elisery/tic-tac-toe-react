@@ -10,14 +10,28 @@ class Screens extends Component {
       gameType: '',
       playerOneToken: '', 
       playerTwoToken: '',
-      computerToken: ''
+      computerToken: '',
+      reset: props
     }
+    console.log(props);
     this.playerChoice = this.playerChoice.bind(this);
     this.tokenChoice = this.tokenChoice.bind(this);
   }
 
   playerChoice(option) {
     this.setState({ gameType: option });
+  }
+
+  resetGame() {
+    // console.log(this.state.reset);
+    if(this.state.reset) {
+      this.setState({ 
+        gameType: '',
+        playerOneToken: '', 
+        playerTwoToken: '',
+        computerToken: '' 
+      });
+    }
   }
   /*
   1. if no player choice set render player choice screen ChoosePlayer
@@ -46,6 +60,7 @@ class Screens extends Component {
 
   render() {
     const { gameType, playerOneToken } = this.state;
+
     if (!gameType) {
       return(
         <ChoosePlayer onChoiceClick={this.playerChoice} />
