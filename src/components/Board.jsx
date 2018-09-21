@@ -15,7 +15,7 @@ class Board extends Component {
   setResetStatus() {
     this.state.reset ? this.setState({ reset: false }): this.setState({ reset: true });
     
-    console.log(this.state.reset)
+    // console.log(this.state.reset)
   }
 
   render() {

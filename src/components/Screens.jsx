@@ -13,7 +13,6 @@ class Screens extends Component {
       computerToken: '',
       reset: props
     }
-    console.log(props);
     this.playerChoice = this.playerChoice.bind(this);
     this.tokenChoice = this.tokenChoice.bind(this);
   }
@@ -23,7 +22,7 @@ class Screens extends Component {
   }
 
   resetGame() {
-    // console.log(this.state.reset);
+    console.log(this.state.reset);
     if(this.state.reset) {
       this.setState({ 
         gameType: '',
