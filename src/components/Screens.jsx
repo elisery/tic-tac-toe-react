@@ -7,12 +7,13 @@ class Screens extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameType: '',
-      playerOneToken: '', 
-      playerTwoToken: '',
-      computerToken: '',
-      reset: props
+      // gameType: '',
+      // playerOneToken: '', 
+      // playerTwoToken: '',
+      // computerToken: '',
+      // reset: props
     }
+    console.log(props)
     this.playerChoice = this.playerChoice.bind(this);
     this.tokenChoice = this.tokenChoice.bind(this);
   }
@@ -21,17 +22,7 @@ class Screens extends Component {
     this.setState({ gameType: option });
   }
 
-  resetGame() {
-    console.log(this.state.reset);
-    if(this.state.reset) {
-      this.setState({ 
-        gameType: '',
-        playerOneToken: '', 
-        playerTwoToken: '',
-        computerToken: '' 
-      });
-    }
-  }
+  
   /*
 
   RESET problem
@@ -58,19 +49,19 @@ class Screens extends Component {
   render() {
     const { gameType, playerOneToken } = this.state;
 
-    if (!gameType) {
-      return(
-        <ChoosePlayer onChoiceClick={this.playerChoice} />
-      )
-    } else if (!playerOneToken) {
-      return(
-        <TokenChoice onTokenClick={this.tokenChoice} />
-      )
-    } else {
-      return(
-        <PlayBoard />
-      )
-    }
+    // if (!gameType) {
+    //   return(
+    //     <ChoosePlayer onChoiceClick={this.playerChoice} />
+    //   )
+    // } else if (!playerOneToken) {
+    //   return(
+    //     <TokenChoice onTokenClick={this.tokenChoice} />
+    //   )
+    // } else {
+    //   return(
+    //     <PlayBoard />
+    //   )
+    // }
     
   }
 }

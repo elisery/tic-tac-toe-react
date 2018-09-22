@@ -7,15 +7,34 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      gameType: '',
+      playerOneToken: '', 
+      playerTwoToken: '',
+      computerToken: '',
       reset: false
     }
     this.setResetStatus = this.setResetStatus.bind(this);
   }
   
   setResetStatus() {
-    this.state.reset ? this.setState({ reset: false }): this.setState({ reset: true });
-    
+    this.state.reset ? this.setState({ reset: false }) : this.setState({ reset: true });
+    this.resetGame();
     // console.log(this.state.reset)
+  }
+  /* 
+  1. pass this.state to Screens component to render correct screen
+  
+  */
+  resetGame() {
+    if(this.state.reset) {
+      this.setState({ 
+        gameType: '',
+        playerOneToken: '', 
+        playerTwoToken: '',
+        computerToken: '', 
+        reset: false 
+      });
+    }
   }
 
   render() {
@@ -23,7 +42,7 @@ class Board extends Component {
     return (
       <div className="board main-shadow">
         <Settings onResetClick={this.setResetStatus}/>
-        <Screens resetStatus={reset}/>
+        <Screens resetStatus={this.state}/>
         
       </div>
     )
