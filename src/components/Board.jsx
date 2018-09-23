@@ -10,8 +10,7 @@ class Board extends Component {
       gameType: '',
       playerOneToken: '', 
       playerTwoToken: '',
-      computerToken: '',
-      reset: false
+      computerToken: ''
     }
     this.setResetStatus = this.setResetStatus.bind(this);
     this.playerChoice = this.playerChoice.bind(this);
@@ -20,7 +19,6 @@ class Board extends Component {
 
   playerChoice(option) {
     this.setState({ gameType: option });
-    console.log('got here')
   }
 
   tokenChoice(option) {
@@ -36,21 +34,12 @@ class Board extends Component {
   }
 
   setResetStatus() {
-    this.state.reset ? this.resetGame() : this.setState({ reset: true });
-   
-    console.log(this.state.reset)
-  }
-
-  resetGame() {
-    if(this.state.reset) {
-      this.setState({ 
-        gameType: '',
-        playerOneToken: '', 
-        playerTwoToken: '',
-        computerToken: '', 
-        reset: false 
-      });
-    }
+    this.setState({ 
+      gameType: '',
+      playerOneToken: '', 
+      playerTwoToken: '',
+      computerToken: ''
+    });
   }
 
   render() {
@@ -64,7 +53,6 @@ class Board extends Component {
           gameType={gameType} 
           playerOneToken={playerOneToken}
         />
-        
       </div>
     )
   }
