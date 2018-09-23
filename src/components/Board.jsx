@@ -14,17 +14,33 @@ class Board extends Component {
       reset: false
     }
     this.setResetStatus = this.setResetStatus.bind(this);
+    this.playerChoice = this.playerChoice.bind(this);
+    this.tokenChoice = this.tokenChoice.bind(this);
   }
-  
+
+  playerChoice(option) {
+    this.setState({ gameType: option });
+    console.log('got here')
+  }
+
+  tokenChoice(option) {
+    let secondOption = ''
+    option === 'x-token' ? secondOption = 'o-token' : secondOption = 'x-token';
+
+    if (this.state.gameType === '2-player') {
+      this.setState({ playerTwoToken: secondOption });
+    } else {
+      this.setState({ computerToken: secondOption })
+    }
+    this.setState({ playerOneToken: option })
+  }
+
   setResetStatus() {
-    this.state.reset ? this.setState({ reset: false }) : this.setState({ reset: true });
-    this.resetGame();
-    // console.log(this.state.reset)
+    this.state.reset ? this.resetGame() : this.setState({ reset: true });
+   
+    console.log(this.state.reset)
   }
-  /* 
-  1. pass this.state to Screens component to render correct screen
-  
-  */
+
   resetGame() {
     if(this.state.reset) {
       this.setState({ 
@@ -38,11 +54,16 @@ class Board extends Component {
   }
 
   render() {
-    const { reset } = this.state;
+    const { gameType, playerOneToken } = this.state;
     return (
       <div className="board main-shadow">
-        <Settings onResetClick={this.setResetStatus}/>
-        <Screens resetStatus={this.state}/>
+        <Settings onResetClick={this.setResetStatus} />
+        <Screens 
+          onPlayerChoiceClick={this.playerChoice} 
+          onTokenChoiceClick={this.tokenChoice}
+          gameType={gameType} 
+          playerOneToken={playerOneToken}
+        />
         
       </div>
     )

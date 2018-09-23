@@ -1,26 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import ChoosePlayer from "./ChoosePlayer";
 import TokenChoice from "./TokenChoice";
 import PlayBoard from "./PlayBoard";
 
-class Screens extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // gameType: '',
-      // playerOneToken: '', 
-      // playerTwoToken: '',
-      // computerToken: '',
-      // reset: props
-    }
-    console.log(props)
-    this.playerChoice = this.playerChoice.bind(this);
-    this.tokenChoice = this.tokenChoice.bind(this);
-  }
+const Screens = props => {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     gameType: '',
+  //     playerOneToken: '', 
+  //     playerTwoToken: '',
+  //     computerToken: '',
+  //     reset: props
+  //   }
+  //   this.playerChoice = this.playerChoice.bind(this);
+  //   this.tokenChoice = this.tokenChoice.bind(this);
+  // }
 
-  playerChoice(option) {
-    this.setState({ gameType: option });
-  }
+  // playerChoice(option) {
+  //   this.setState({ gameType: option });
+  // }
 
   
   /*
@@ -34,36 +33,44 @@ class Screens extends Component {
     -reset function must be in same component as where states are reset
   */
 
-  tokenChoice(option) {
-    let secondOption = ''
-    option === 'x-token' ? secondOption = 'o-token' : secondOption = 'x-token';
+  // tokenChoice(option) {
+  //   let secondOption = ''
+  //   option === 'x-token' ? secondOption = 'o-token' : secondOption = 'x-token';
 
-    if (this.state.gameType === '2-player') {
-      this.setState({ playerTwoToken: secondOption });
-    } else {
-      this.setState({ computerToken: secondOption })
-    }
-    this.setState({ playerOneToken: option })
+  //   if (this.state.gameType === '2-player') {
+  //     this.setState({ playerTwoToken: secondOption });
+  //   } else {
+  //     this.setState({ computerToken: secondOption })
+  //   }
+  //   this.setState({ playerOneToken: option })
+  // }
+
+  
+  // const { gameType, playerOneToken } = this.state;
+  const { 
+    gameType, 
+    playerOneToken, 
+    onPlayerChoiceClick = () => {}, 
+    onTokenChoiceClick = () => {} 
+  } = props;
+  console.log(props);
+  if (!gameType) {
+    return(
+      // <ChoosePlayer onChoiceClick={this.playerChoice} />
+      <ChoosePlayer onChoiceClick={onPlayerChoiceClick} />
+    )
+  } else if (!playerOneToken) {
+    return(
+      // <TokenChoice onTokenClick={this.tokenChoice} />
+      <TokenChoice onTokenClick={onTokenChoiceClick} />
+    )
+  } else {
+    return(
+      <PlayBoard />
+    )
   }
-
-  render() {
-    const { gameType, playerOneToken } = this.state;
-
-    // if (!gameType) {
-    //   return(
-    //     <ChoosePlayer onChoiceClick={this.playerChoice} />
-    //   )
-    // } else if (!playerOneToken) {
-    //   return(
-    //     <TokenChoice onTokenClick={this.tokenChoice} />
-    //   )
-    // } else {
-    //   return(
-    //     <PlayBoard />
-    //   )
-    // }
-    
-  }
+  
+  
 }
 
 export default Screens;
