@@ -23,7 +23,7 @@ const Screens = props => {
     )
   } else {
     return(
-      <PlayBoard />
+      <PlayBoard gameType={gameType} playerOneToken={playerOneToken} />
     )
   }
   

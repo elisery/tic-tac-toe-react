@@ -1,18 +1,33 @@
 import React, { Component } from "react";
-
+import Square from "./Square";
 
 class PlayBoard extends Component {
   constructor(props) {
     super(props); 
     this.state = {
-
+      moveBoard: [
+        ' ', ' ', ' ',
+        ' ', ' ', ' ',
+        ' ', ' ', ' '
+      ],
+      winningCombos: [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ],
+      turn: 'playerOne',
+      winningArr: []
     }
+
   }
   render() {
+    const { gameType, playerOneToken } = this.props;
+
     return(
       <div className="play-area chalkboard">
         <div id="row-1" className="row bottom-border">
           <div id="0" className="top-right-border square">
+            <Square />
           </div>
           <div id="1" className="top-right-border square">
           </div>
