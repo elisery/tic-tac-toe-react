@@ -1,9 +1,9 @@
 import React from "react";
 
 const Square = props => {
-  const { value } = props
+  const { val } = props
   return(
-    <p>{value}</p>
+    <p>{val}</p>
   )
 }
 

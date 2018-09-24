@@ -23,7 +23,7 @@ class Board extends Component {
 
   tokenChoice(option) {
     let secondOption = ''
-    option === 'x-token' ? secondOption = 'o-token' : secondOption = 'x-token';
+    option === 'X' ? secondOption = 'O' : secondOption = 'X';
 
     if (this.state.gameType === '2-player') {
       this.setState({ playerTwoToken: secondOption });
