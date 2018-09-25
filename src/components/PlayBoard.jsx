@@ -7,6 +7,8 @@ class PlayBoard extends Component {
     this.state = {
       gameType: this.props.gameType,
       playerOneToken: this.props.playerOneToken,
+      playerTwoToken: '',
+      computerToken: '',
       moveBoard: [
         ' ', ' ', ' ',
         ' ', ' ', ' ',
