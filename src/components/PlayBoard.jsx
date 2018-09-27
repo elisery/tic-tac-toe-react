@@ -26,9 +26,9 @@ class PlayBoard extends Component {
   }
   move(id) {
     console.log("the id", id)
-    // const theMoveBoard = this.state.moveBoard;
-    // theMoveBoard[id] = 
-    // this.setState({ })
+    const theMoveBoard = this.state.moveBoard;
+    theMoveBoard[id] = 
+    this.setState({ })
   }
 
   render() {
