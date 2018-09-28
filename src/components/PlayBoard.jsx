@@ -25,10 +25,60 @@ class PlayBoard extends Component {
     this.move = this.move.bind(this);
   }
   move(id) {
-    console.log(this.state.playerOneToken, this.state.playerTwoToken, this.state.computerToken)
+    console.log(id)
+    /*
+    1. set value in moveBoard & display on playboard
+    2. check if playerone turn or player2/computer
+    3. check if winning combo hit
+    4. check if board full
+
+    */
     const theMoveBoard = this.state.moveBoard;
-    theMoveBoard[id] = this.state.playerOneToken;
+    /*
+    1. if turn is playerOne
+    2. set moveboard to playerone token & turn: playerTwo
+    3. else if two player set moveboard to playertwo token & turn: playerOne
+    4. else if one player call computerMove function
+  
+    1. check for winning combo
+     
+    */
+    if (this.state.gameType === '1-player') {
+      if (this.state.turn === 'computer') {
+        this.computerMove();
+      } else {
+        if (this.isEmpty(id)) {
+          theMoveBoard[id] = this.state.playerOneToken;
+          this.setState({ turn: 'computer' });
+        }
+      }
+    } else {
+      if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
+        theMoveBoard[id] = this.state.playerOneToken;
+        this.setState({ turn: 'playerTwo' });
+      } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
+        theMoveBoard[id] = this.state.playerTwoToken;
+        this.setState({ turn: 'playerOne' });
+      }
+    }
     this.setState({ moveBoard: theMoveBoard });
+  }
+
+  // Check if square is available for a move
+  isEmpty(id) {
+    if (this.state.moveBoard[id] === ' ') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  computerMove() {
+    /*
+    1. move where there is most chance of winning & block other player
+      - checking if square is empty
+    2. set turn to playerOne
+    */
   }
 
   render() {
@@ -40,32 +90,32 @@ class PlayBoard extends Component {
           <div onClick={() => this.move(0)} id="0" className="top-right-border square">
             <Square val={moveBoard[0]} />
           </div>
-          <div id="1" className="top-right-border square">
+          <div onClick={() => this.move(1)} id="1" className="top-right-border square">
             <Square val={moveBoard[1]}/>
           </div>
-          <div id="2" className="top-right-corner square">
+          <div onClick={() => this.move(2)} id="2" className="top-right-corner square">
             <Square val={moveBoard[2]}/>
           </div>
         </div>
         <div id="row-2" className="row bottom-border">
-          <div id="3" className="right-border square">
+          <div onClick={() => this.move(3)} id="3" className="right-border square">
             <Square val={moveBoard[3]}/>
           </div>
-          <div id="4" className="right-border square">
+          <div onClick={() => this.move(4)} id="4" className="right-border square">
             <Square val={moveBoard[4]}/>
           </div>
-          <div id="5" className="square">
+          <div onClick={() => this.move(5)} id="5" className="square">
             <Square val={moveBoard[5]}/>
           </div>
         </div>
         <div id="row-3" className="row">
-          <div id="6" className="bottom-right-border square">
+          <div onClick={() => this.move(6)} id="6" className="bottom-right-border square">
             <Square val={moveBoard[6]}/>
           </div>
-          <div id="7" className="bottom-right-border square">
+          <div onClick={() => this.move(7)} id="7" className="bottom-right-border square">
             <Square val={moveBoard[7]}/>
           </div>
-          <div id="8" className="bottom-right-corner square">
+          <div onClick={() => this.move(8)} id="8" className="bottom-right-corner square">
             <Square val={moveBoard[8]}/>
           </div>
         </div>
