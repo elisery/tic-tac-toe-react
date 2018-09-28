@@ -7,8 +7,8 @@ class PlayBoard extends Component {
     this.state = {
       gameType: this.props.gameType,
       playerOneToken: this.props.playerOneToken,
-      playerTwoToken: '',
-      computerToken: '',
+      playerTwoToken: this.props.playerTwoToken,
+      computerToken: this.props.computerToken,
       moveBoard: [
         ' ', ' ', ' ',
         ' ', ' ', ' ',
@@ -25,10 +25,10 @@ class PlayBoard extends Component {
     this.move = this.move.bind(this);
   }
   move(id) {
-    console.log("the id", id)
-    // const theMoveBoard = this.state.moveBoard;
-    // theMoveBoard[id] = 
-    // this.setState({ })
+    console.log(this.state.playerOneToken, this.state.playerTwoToken, this.state.computerToken)
+    const theMoveBoard = this.state.moveBoard;
+    theMoveBoard[id] = this.state.playerOneToken;
+    this.setState({ moveBoard: theMoveBoard });
   }
 
   render() {

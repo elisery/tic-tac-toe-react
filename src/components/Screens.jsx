@@ -7,6 +7,8 @@ const Screens = props => {
   const { 
     gameType, 
     playerOneToken, 
+    playerTwoToken, 
+    computerToken,
     onPlayerChoiceClick = () => {}, 
     onTokenChoiceClick = () => {} 
   } = props;
@@ -23,7 +25,12 @@ const Screens = props => {
     )
   } else {
     return(
-      <PlayBoard gameType={gameType} playerOneToken={playerOneToken} />
+      <PlayBoard 
+        gameType={gameType} 
+        playerOneToken={playerOneToken} 
+        playerTwoToken={playerTwoToken}
+        computerToken={computerToken}
+      />
     )
   }
   

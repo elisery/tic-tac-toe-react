@@ -10,8 +10,8 @@ const TokenChoice = props =>{
         <h2>Are you an X or an O?</h2>
       </div>
       <div className="options">
-        <button onClick={() => onTokenClick('x-token')} className="token-choice" id="x-token">X</button>
-        <button onClick={() => onTokenClick('o-token')} className="token-choice" id="o-token">O</button>
+        <button onClick={() => onTokenClick('X')} className="token-choice" id="x-token">X</button>
+        <button onClick={() => onTokenClick('O')} className="token-choice" id="o-token">O</button>
       </div>
       <div className="options">
         <button id="back"> &lt;- back</button>

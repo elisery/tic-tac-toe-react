@@ -43,7 +43,7 @@ class Board extends Component {
   }
 
   render() {
-    const { gameType, playerOneToken } = this.state;
+    const { gameType, playerOneToken, playerTwoToken, computerToken } = this.state;
     return (
       <div className="board main-shadow">
         <Settings onResetClick={this.setResetStatus} />
@@ -52,6 +52,8 @@ class Board extends Component {
           onTokenChoiceClick={this.tokenChoice}
           gameType={gameType} 
           playerOneToken={playerOneToken}
+          playerTwoToken={playerTwoToken}
+          computerToken={computerToken}
         />
       </div>
     )
