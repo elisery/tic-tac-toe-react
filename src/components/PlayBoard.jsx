@@ -37,7 +37,7 @@ class PlayBoard extends Component {
     return(
       <div className="play-area chalkboard">
         <div id="row-1" className="row bottom-border">
-          <div onClick={this.move} id="0" className="top-right-border square">
+          <div onClick={() => this.move(0)} id="0" className="top-right-border square">
             <Square val={moveBoard[0]} />
           </div>
           <div id="1" className="top-right-border square">
