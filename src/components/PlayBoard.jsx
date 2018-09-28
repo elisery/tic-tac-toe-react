@@ -26,9 +26,9 @@ class PlayBoard extends Component {
   }
   move(id) {
     console.log("the id", id)
-    const theMoveBoard = this.state.moveBoard;
-    theMoveBoard[id] = 
-    this.setState({ })
+    // const theMoveBoard = this.state.moveBoard;
+    // theMoveBoard[id] = 
+    // this.setState({ })
   }
 
   render() {
@@ -37,8 +37,8 @@ class PlayBoard extends Component {
     return(
       <div className="play-area chalkboard">
         <div id="row-1" className="row bottom-border">
-          <div id="0" className="top-right-border square">
-            <Square val={moveBoard[0]} onClick={this.move(0)} />
+          <div onClick={this.move} id="0" className="top-right-border square">
+            <Square val={moveBoard[0]} />
           </div>
           <div id="1" className="top-right-border square">
             <Square val={moveBoard[1]}/>
