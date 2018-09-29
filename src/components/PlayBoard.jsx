@@ -21,7 +21,7 @@ class PlayBoard extends Component {
       ],
       turn: 'playerOne',
       winningArr: [],
-      turnCount: 0
+      turnCount: 1
     }
     this.move = this.move.bind(this);
   }
@@ -30,29 +30,30 @@ class PlayBoard extends Component {
     let turnCount = this.state.turnCount;
   
     if (this.state.gameType === '1-player') {
-      if (this.state.turn === 'computer') {
-        this.computerMove();
-      } else {
-        if (this.isEmpty(id)) {
-          theMoveBoard[id] = this.state.playerOneToken;
-          this.win(this.state.playerOneToken) ? console.log(this.state.winningArr) : this.setState({ turn: 'computer', turnCount: turnCount += 1 });
-        }
+      if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
+        theMoveBoard[id] = this.state.playerOneToken;
+        this.setState({ turn: 'computer', turnCount: turnCount += 1 });
+      } else if (this.state.turn === 'computer') {
+        // CALL COMPUTER PLAY in a SET TIMEOUT
       }
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        this.win(this.state.playerOneToken) ? console.log(this.state.winningArr) : this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 });
+        this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 });
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
-        this.win(this.state.playerTwoToken) ? console.log(this.state.winningArr) : this.setState({ turn: 'playerOne', turnCount: turnCount += 1 });
+        this.setState({ turn: 'playerOne', turnCount: turnCount += 1 });
       }
     }
     this.setState({ moveBoard: theMoveBoard });
-    /*
-    3. check if winning combo hit
-    4. check if board full
-    */
     
+    if (this.win()) {
+      console.log('someone won');
+      // DO WIN TASKS
+    } else if (this.tie()) {
+      console.log('there is a tie');
+      // DO TIE TASKS
+    }
   }
 
   // Check if square is available for a move
@@ -74,30 +75,28 @@ class PlayBoard extends Component {
     */
   }
 
-  moveTasks() {
-    /*
-    1. set turn state
-    2. increase turn count
-    3. add move to board
-    4. check for win
-    5. check for tie
-
-    */
-  }
-
-  win(token) {
+  win() {
     let win = false;
     const moveBoard = this.state.moveBoard;
     this.state.winningCombos.forEach(wc => {
       const index1 = wc[0];
       const index2 = wc[1];
       const index3 = wc[2];
-      if (moveBoard[index1] === token && moveBoard[index2] === token && moveBoard[index3] === token) {
+      if ((moveBoard[index1] === 'X' && moveBoard[index2] === 'X' && moveBoard[index3] === 'X') || 
+        (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
         this.setState({ winningArr: wc });
       }
     });
     return win;
+  }
+
+  winTasks() {
+    /* execute win tasks 
+    1. reset board, turn, turnCount
+    2. set scoreboard
+    3. do overlay with win message 
+    */
   }
 
   tie() {
@@ -106,6 +105,13 @@ class PlayBoard extends Component {
     } else {
       return false;
     }
+  }
+
+  tieTasks() {
+    /* execute tasks for tie game 
+    1. reset board, turn, turnCount
+    2. do overlay with message
+    */
   }
 
   render() {
