@@ -20,48 +20,39 @@ class PlayBoard extends Component {
         [0, 4, 8], [2, 4, 6]
       ],
       turn: 'playerOne',
-      winningArr: []
+      winningArr: [],
+      turnCount: 0
     }
     this.move = this.move.bind(this);
   }
   move(id) {
-    console.log(id)
-    /*
-    1. set value in moveBoard & display on playboard
-    2. check if playerone turn or player2/computer
-    3. check if winning combo hit
-    4. check if board full
-
-    */
     const theMoveBoard = this.state.moveBoard;
-    /*
-    1. if turn is playerOne
-    2. set moveboard to playerone token & turn: playerTwo
-    3. else if two player set moveboard to playertwo token & turn: playerOne
-    4. else if one player call computerMove function
+    let turnCount = this.state.turnCount;
   
-    1. check for winning combo
-     
-    */
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'computer') {
         this.computerMove();
       } else {
         if (this.isEmpty(id)) {
           theMoveBoard[id] = this.state.playerOneToken;
-          this.setState({ turn: 'computer' });
+          this.win(this.state.playerOneToken) ? console.log(this.state.winningArr) : this.setState({ turn: 'computer', turnCount: turnCount += 1 });
         }
       }
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        this.setState({ turn: 'playerTwo' });
+        this.win(this.state.playerOneToken) ? console.log(this.state.winningArr) : this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 });
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
-        this.setState({ turn: 'playerOne' });
+        this.win(this.state.playerTwoToken) ? console.log(this.state.winningArr) : this.setState({ turn: 'playerOne', turnCount: turnCount += 1 });
       }
     }
     this.setState({ moveBoard: theMoveBoard });
+    /*
+    3. check if winning combo hit
+    4. check if board full
+    */
+    
   }
 
   // Check if square is available for a move
@@ -72,13 +63,49 @@ class PlayBoard extends Component {
       return false;
     }
   }
-
+ 
   computerMove() {
     /*
+    0. check if board full 
     1. move where there is most chance of winning & block other player
       - checking if square is empty
+      - check for win after moving if no win: 
     2. set turn to playerOne
     */
+  }
+
+  moveTasks() {
+    /*
+    1. set turn state
+    2. increase turn count
+    3. add move to board
+    4. check for win
+    5. check for tie
+
+    */
+  }
+
+  win(token) {
+    let win = false;
+    const moveBoard = this.state.moveBoard;
+    this.state.winningCombos.forEach(wc => {
+      const index1 = wc[0];
+      const index2 = wc[1];
+      const index3 = wc[2];
+      if (moveBoard[index1] === token && moveBoard[index2] === token && moveBoard[index3] === token) {
+        win = true;
+        this.setState({ winningArr: wc });
+      }
+    });
+    return win;
+  }
+
+  tie() {
+    if (this.state.turnCount === 9 && !this.win('X') && !this.win('O')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   render() {
