@@ -50,10 +50,13 @@ class PlayBoard extends Component {
     
     if (this.win()) {
       console.log('someone won');
-      // DO WIN TASKS
+      // ADD OVERLAY
+      // CALL UPDATE SCOREBOARD
+      // CALL RESET
     } else if (this.tie()) {
       console.log('there is a tie');
-      // DO TIE TASKS
+      // ADD OVERLAY
+      // CALL RESET
     }
   }
 
@@ -67,13 +70,6 @@ class PlayBoard extends Component {
   }
  
   computerMove() {
-    /*
-    0. check if board full 
-    1. move where there is most chance of winning & block other player
-      - checking if square is empty
-      - check for win after moving if no win: 
-    2. set turn to playerOne
-    */
     const arrayToBlock = this.closeToWin();
     let computerIndex;
     const cToken = this.state.computerToken;
@@ -90,64 +86,53 @@ class PlayBoard extends Component {
         // If middle square is unoccupied, claim it first
         if (mBoard[4] === ' ') {
           computerIndex = 4;
-          // mBoard[4] = cToken;
           return;
         }
         // If two squares of a winning combo are selected, pick the third
         if (mBoard[index1] === cToken && mBoard[index2] === cToken && mBoard[index3] === ' ' ) {
           computerIndex = index3;
-          // mBoard[index3] = cToken;
           return;
         } else if (mBoard[index1] === cToken && mBoard[index2] === ' ' && mBoard[index3] === cToken) {
           computerIndex = index2;
-          // mBoard[index2] = cToken;
           return;
         } else if (mBoard[index1] === ' ' && mBoard[index2] === cToken && mBoard[index3] === cToken) {
           computerIndex = index1;
-          // mBoard[index1] = cToken;
           return;
         }
-
         // If one square in a winning combo is selected, pick the adjacent
         if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === cToken) {
           computerIndex = index2;
-          // mBoard[index2] = cToken;
           return;
         } else if (mBoard[index1] === ' ' && mBoard[index2] === cToken && mBoard[index3] === ' ') {
           computerIndex = index3;
-          // mBoard[index3] = cToken;
           return;
         } else if (mBoard[index1] === cToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
           computerIndex = index2;
-          // mBoard[index2] = cToken;
           return;
         }
         // If one square in a winning combo is selected by playerOne, pick the adjacent
         if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === pToken) {
           computerIndex = index2;
-          // mBoard[index2] = cToken;
           return;
         } else if (mBoard[index1] === ' ' && mBoard[index2] === pToken && mBoard[index3] === ' ') {
           computerIndex = index3;
-          // mBoard[index3] = cToken;
           return;
         } else if (mBoard[index1] === pToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
           computerIndex = index2;
-          // mBoard[index2] = cToken;
           return;
         }
         // If no squares are occupied, pick one
         if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
           computerIndex = index3;
-          // mBoard[index3] = cToken;
           return;
         }
       });
     } else  {
       // Block playerOne from winning
       arrayToBlock.forEach(i => {
-        mBoard[i] === ' ' ? computerIndex = i : false;
-        // mBoard[i] === ' ' ? mBoard[i] = cToken : false;
+        if (mBoard[i] === ' ') {
+          computerIndex = i;
+        }
       });
     }
     // Update the moveBoard
@@ -156,10 +141,13 @@ class PlayBoard extends Component {
     // Check for a win & tie
     if (this.win()) {
       console.log('computer won');
-      // call WIN TASKS
+      // ADD OVERLAY
+      // CALL UPDATE SCOREBOARD
+      // CALL RESET
     } else if (this.tie()) {
       console.log('there is a tie');
-      // call TIE TASKS
+      // ADD OVERLAY
+      // CALL RESET
     }
   }
 
@@ -200,14 +188,6 @@ class PlayBoard extends Component {
     return win;
   }
 
-  winTasks() {
-    /* execute win tasks 
-    1. reset board, turn, turnCount
-    2. set scoreboard
-    3. do overlay with win message 
-    */
-  }
-
   tie() {
     if (this.state.turnCount === 9 && !this.win('X') && !this.win('O')) {
       return true;
@@ -216,11 +196,22 @@ class PlayBoard extends Component {
     }
   }
 
-  tieTasks() {
-    /* execute tasks for tie game 
-    1. reset board, turn, turnCount
-    2. do overlay with message
-    */
+  updateScore() {
+    // UPDATE SCORE HERE
+  }
+
+  reset() {
+    // Reset board, turn, turnCount
+    this.setState({ 
+      moveBoard: [
+      ' ', ' ', ' ',
+      ' ', ' ', ' ',
+      ' ', ' ', ' '
+      ],
+      turn: 'playerOne',
+      turnCount: 1
+    }); 
+    // REMOVE OVERLAY
   }
 
   render() {
