@@ -33,10 +33,10 @@ class PlayBoard extends Component {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         this.setState({ turn: 'computer', turnCount: turnCount += 1 });
-      } else if (this.state.turn === 'computer') {
-        // CALL COMPUTER PLAY in a SET TIMEOUT
-        this.computerMove();
-      }
+        setTimeout(() => {
+          this.computerMove();
+        }, 1000);
+      } 
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
