@@ -35,6 +35,7 @@ class PlayBoard extends Component {
         this.setState({ turn: 'computer', turnCount: turnCount += 1 });
       } else if (this.state.turn === 'computer') {
         // CALL COMPUTER PLAY in a SET TIMEOUT
+        this.computerMove();
       }
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
@@ -73,6 +74,96 @@ class PlayBoard extends Component {
       - check for win after moving if no win: 
     2. set turn to playerOne
     */
+    const arrayToBlock = this.closeToWin(this.state.playerOneToken);
+    // let computerIndex;
+    const cToken = this.state.computerToken;
+    const pToken = this.state.playerOneToken;
+    const mBoard = this.state.moveBoard;
+    let turnCount = this.state.turnCount;
+    // If playerOne is not close to winning
+    if (arrayToBlock === undefined) {
+      this.state.winningCombos.forEach(wc => {
+        let index1 = wc[0];
+        let index2 = wc[1];
+        let index3 = wc[2];
+        // If middle square is unoccupied, claim it first
+        if (mBoard[4] === ' ') {
+          // computerIndex = 4;
+          mBoard[4] = cToken;
+          return;
+        }
+        // If two squares of a winning combo are selected, pick the third
+        if (mBoard[index1] === cToken && mBoard[index2] === cToken && mBoard[index3] === ' ' ) {
+          // computerIndex = index3;
+          mBoard[index3] = cToken;
+          return;
+        } else if (mBoard[index1] === cToken && mBoard[index2] === ' ' && mBoard[index3] === cToken) {
+          // computerIndex = index2;
+          mBoard[index2] = cToken;
+          return;
+        } else if (mBoard[index1] === ' ' && mBoard[index2] === cToken && mBoard[index3] === cToken) {
+          // computerIndex = index1;
+          mBoard[index1] = cToken;
+          return;
+        }
+
+        // If one square in a winning combo is selected, pick the adjacent
+        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === cToken) {
+          // computerIndex = index2;
+          mBoard[index2] = cToken;
+          return;
+        } else if (mBoard[index1] === ' ' && mBoard[index2] === cToken && mBoard[index3] === ' ') {
+          // computerIndex = index3;
+          mBoard[index3] = cToken;
+          return;
+        } else if (mBoard[index1] === cToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
+          // computerIndex = index2;
+          mBoard[index2] = cToken;
+          return;
+        }
+        // If one square in a winning combo is selected by playerOne, pick the adjacent
+        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === pToken) {
+          // computerIndex = index2;
+          mBoard[index2] = cToken;
+          return;
+        } else if (mBoard[index1] === ' ' && mBoard[index2] === pToken && mBoard[index3] === ' ') {
+          // computerIndex = index3;
+          mBoard[index3] = cToken;
+          return;
+        } else if (mBoard[index1] === pToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
+          // computerIndex = index2;
+          mBoard[index2] = cToken;
+          return;
+        }
+        // If no squares are occupied, pick one
+        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
+          // computerIndex = index3;
+          mBoard[index3] = cToken;
+          return;
+        }
+      });
+    } else  {
+      // Block playerOne from winning
+      arrayToBlock.forEach(i => {
+        // mBoard[i] === ' ' ? computerIndex = i : false;
+        mBoard[i] === ' ' ? mBoard[i] = cToken : false;
+      });
+    }
+    // Update the moveBoard
+    // mBoard[computerIndex] = cToken;
+    this.setState({ moveBoard: mBoard, turn: 'playerOne', turnCount: turnCount += 1  });
+    // Check for a win & tie
+    if (this.win()) {
+      console.log('computer won');
+      // call WIN TASKS
+    } else if (this.tie()) {
+      console.log('there is a tie');
+      // call TIE TASKS
+    }
+  }
+
+  closeToWin(token) {
+
   }
 
   win() {
