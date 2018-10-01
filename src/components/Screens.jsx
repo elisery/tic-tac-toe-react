@@ -13,7 +13,7 @@ const Screens = props => {
     onTokenChoiceClick = () => {} 
   } = props;
 
-  console.log(props);
+  // console.log(props);
 
   if (!gameType) {
     return(
