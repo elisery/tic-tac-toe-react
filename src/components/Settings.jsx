@@ -3,7 +3,7 @@ import Scoreboard from './Scoreboard';
 
 const Settings = props => {
   const { onResetClick = () => {}, gameType } = props;
-  // console.log(gameType);
+  // console.log('settings', gameType);
   return(
     <div className="settings">
       <Scoreboard gameType={gameType} />

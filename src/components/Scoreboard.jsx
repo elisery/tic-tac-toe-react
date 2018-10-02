@@ -4,19 +4,20 @@ class Scoreboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerTwoLabel: 'computer', 
-      game: this.props.gameType
+      playerTwoLabel: 'computer',
+      gameType: this.props.gameType 
     }
   }
   
   render() {
-    console.log('scoreboardprops', this.state.game);
-    // console.log(this.props);
+    console.log('scoreboardprops', this.state.gameType);
+    // console.log('just props', this.props);
     if (this.state.gameType === '2-player') {
       this.setState({ playerTwoLabel: 'player 2' });
     }
 
-    const { playerTwoLabel } = this.state
+    const { playerTwoLabel, gameType } = this.state
+
     return(
       <div className="scores">
         <div id="player">
