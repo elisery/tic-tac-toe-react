@@ -1,37 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Scoreboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      playerTwoLabel: 'computer',
-      gameType: this.props.gameType 
-    }
-  }
+const Scoreboard = props => {
+  const { gameType } = props;
+  // console.log(gameType)
+  let theGame = gameType;
   
-  render() {
-    console.log('scoreboardprops', this.state.gameType);
-    // console.log('just props', this.props);
-    if (this.state.gameType === '2-player') {
-      this.setState({ playerTwoLabel: 'player 2' });
-    }
-
-    const { playerTwoLabel, gameType } = this.state
-
-    return(
-      <div className="scores">
-        <div id="player">
-          <h5 id="score1">player 1:&nbsp;</h5><h5 id="score1num">0</h5>
-        </div>
-        <div id="separator">
-          <h5>&nbsp;&nbsp;</h5>
-        </div>
-        <div id="computer">
-          <h5 id="score2">{playerTwoLabel}:&nbsp;</h5><h5 id="score2num">0</h5>
-        </div>
+  theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
+  
+  return(
+    <div className="scores">
+      <div id="player">
+        <h5 id="score1">player 1:&nbsp;</h5><h5 id="score1num">0</h5>
       </div>
-    )
-  }
+      <div id="separator">
+        <h5>&nbsp;&nbsp;</h5>
+      </div>
+      <div id="computer">
+        <h5 id="score2">{theGame}:&nbsp;</h5><h5 id="score2num">0</h5>
+      </div>
+    </div>
+  )
+  
 }
 
 export default Scoreboard;
