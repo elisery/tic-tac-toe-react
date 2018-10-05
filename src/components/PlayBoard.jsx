@@ -198,6 +198,9 @@ class PlayBoard extends Component {
 
   updateScore() {
     // UPDATE SCORE HERE
+    /*
+    1. if either player wins, pass score to settings and to scoreboard
+    */
   }
 
   reset() {
