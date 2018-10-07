@@ -21,7 +21,12 @@ class PlayBoard extends Component {
       ],
       turn: 'playerOne',
       winningArr: [],
-      turnCount: 1
+      turnCount: 1, 
+      scores: {
+        playerOne: 0, 
+        playerTwo: 0, 
+        computerPlayer: 0
+      }
     }
     this.move = this.move.bind(this);
   }
@@ -52,11 +57,14 @@ class PlayBoard extends Component {
       console.log('someone won');
       // ADD OVERLAY
       // CALL UPDATE SCOREBOARD
+      this.updateScore();
       // CALL RESET
+      this.reset();
     } else if (this.tie()) {
       console.log('there is a tie');
       // ADD OVERLAY
       // CALL RESET
+      this.reset();
     }
   }
 
@@ -143,11 +151,14 @@ class PlayBoard extends Component {
       console.log('computer won');
       // ADD OVERLAY
       // CALL UPDATE SCOREBOARD
+      this.updateScore();
       // CALL RESET
+      this.reset();
     } else if (this.tie()) {
       console.log('there is a tie');
       // ADD OVERLAY
       // CALL RESET
+      this.reset();
     }
   }
 
@@ -199,10 +210,23 @@ class PlayBoard extends Component {
   updateScore() {
     // UPDATE SCORE HERE
     /*
-    1. if either player wins, pass score to settings and to scoreboard
-    2. if it is a tie, pass nothing
-    3. Reset score if reset button pressed
+    if either player wins, pass score to settings and to scoreboard
+    1. check this.state.turn
+    2. pass to Screens
+    3. Screens passes to Board
+    4. Board passes to Settings
+    5. settings passes to scoreboard 
     */
+    const { winner } = this.state.turn;
+    const { theScores } = this.state.scores;
+    if (winner === 'playerOne') {
+      theScores.playerOne = theScores.playerOne += 1;
+    } else if (winner === 'playerTwo') {
+      theScores.playerTwo = theScores.playerTwo += 1;
+    } else {
+      theScores.computer = theScores.computer += 1;
+    }
+    this.setState({ scores: theScores });
   }
 
   reset() {
