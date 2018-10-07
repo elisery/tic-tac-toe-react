@@ -201,6 +201,7 @@ class PlayBoard extends Component {
     /*
     1. if either player wins, pass score to settings and to scoreboard
     2. if it is a tie, pass nothing
+    3. Reset score if reset button pressed
     */
   }
 
