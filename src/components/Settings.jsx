@@ -2,11 +2,11 @@ import React from "react";
 import Scoreboard from './Scoreboard';
 
 const Settings = props => {
-  const { onResetClick = () => {}, gameType } = props;
+  const { onResetClick = () => {}, gameType, scores } = props;
   // console.log('settings', gameType);
   return(
     <div className="settings">
-      <Scoreboard gameType={gameType} />
+      <Scoreboard gameType={gameType} scores={scores} />
       <div className="controls">
         <button onClick={() => onResetClick()} id="reset">Reset</button>
       </div>

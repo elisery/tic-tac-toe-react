@@ -1,8 +1,10 @@
 import React from "react";
 
 const Scoreboard = props => {
-  const { gameType } = props;
+  const { gameType, scores } = props;
   let theGame = gameType;
+
+  console.log('scoreboard', scores);
   
   theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
   

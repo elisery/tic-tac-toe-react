@@ -9,6 +9,7 @@ const Screens = props => {
     playerOneToken, 
     playerTwoToken, 
     computerToken,
+    scores,
     onPlayerChoiceClick = () => {}, 
     onTokenChoiceClick = () => {} 
   } = props;
@@ -30,6 +31,7 @@ const Screens = props => {
         playerOneToken={playerOneToken} 
         playerTwoToken={playerTwoToken}
         computerToken={computerToken}
+        scores={scores}
       />
     )
   }

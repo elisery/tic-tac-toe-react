@@ -9,6 +9,7 @@ class PlayBoard extends Component {
       playerOneToken: this.props.playerOneToken,
       playerTwoToken: this.props.playerTwoToken,
       computerToken: this.props.computerToken,
+      scores: this.props.scores,
       moveBoard: [
         ' ', ' ', ' ',
         ' ', ' ', ' ',
@@ -21,12 +22,7 @@ class PlayBoard extends Component {
       ],
       turn: 'playerOne',
       winningArr: [],
-      turnCount: 1, 
-      scores: {
-        playerOne: 0, 
-        playerTwo: 0, 
-        computerPlayer: 0
-      }
+      turnCount: 1
     }
     this.move = this.move.bind(this);
   }
@@ -216,16 +212,20 @@ class PlayBoard extends Component {
     3. Screens passes to Board
     4. Board passes to Settings
     5. settings passes to scoreboard 
+
+    I THINK scores object needs to be defined in the Board component and passed as props
     */
-    const { winner } = this.state.turn;
-    const { theScores } = this.state.scores;
+    const winner = this.state.turn;
+    const theScores = this.state.scores;
+    
     if (winner === 'playerOne') {
       theScores.playerOne = theScores.playerOne += 1;
     } else if (winner === 'playerTwo') {
       theScores.playerTwo = theScores.playerTwo += 1;
     } else {
-      theScores.computer = theScores.computer += 1;
+      theScores.computerPlayer = theScores.computerPlayer += 1;
     }
+    // console.log(theScores);
     this.setState({ scores: theScores });
   }
 

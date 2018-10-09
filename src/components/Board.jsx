@@ -10,7 +10,12 @@ class Board extends Component {
       gameType: '',
       playerOneToken: '', 
       playerTwoToken: '',
-      computerToken: ''
+      computerToken: '', 
+      scores: {
+        playerOne: 0, 
+        playerTwo: 0, 
+        computerPlayer: 0
+      }
     }
     this.setResetStatus = this.setResetStatus.bind(this);
     this.playerChoice = this.playerChoice.bind(this);
@@ -43,10 +48,10 @@ class Board extends Component {
   }
 
   render() {
-    const { gameType, playerOneToken, playerTwoToken, computerToken } = this.state;
+    const { gameType, playerOneToken, playerTwoToken, computerToken, scores } = this.state;
     return (
       <div className="board main-shadow">
-        <Settings onResetClick={this.setResetStatus} gameType={gameType} />
+        <Settings onResetClick={this.setResetStatus} gameType={gameType} scores={scores}/>
         <Screens 
           onPlayerChoiceClick={this.playerChoice} 
           onTokenChoiceClick={this.tokenChoice}
@@ -54,6 +59,7 @@ class Board extends Component {
           playerOneToken={playerOneToken}
           playerTwoToken={playerTwoToken}
           computerToken={computerToken}
+          scores={scores}
         />
       </div>
     )
