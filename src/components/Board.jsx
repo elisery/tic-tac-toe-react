@@ -43,7 +43,12 @@ class Board extends Component {
       gameType: '',
       playerOneToken: '', 
       playerTwoToken: '',
-      computerToken: ''
+      computerToken: '',
+      scores: {
+        playerOne: 0, 
+        playerTwo: 0, 
+        computerPlayer: 0
+      } 
     });
   }
 

@@ -50,12 +50,12 @@ class PlayBoard extends Component {
     this.setState({ moveBoard: theMoveBoard });
     
     if (this.win()) {
-      console.log('someone won');
+      console.log('someone won'); 
       // ADD OVERLAY
       // CALL UPDATE SCOREBOARD
       this.updateScore();
       // CALL RESET
-      this.reset();
+      setTimeout(() => this.reset(), 1000);
     } else if (this.tie()) {
       console.log('there is a tie');
       // ADD OVERLAY

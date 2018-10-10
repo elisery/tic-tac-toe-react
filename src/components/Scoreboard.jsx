@@ -11,7 +11,7 @@ const Scoreboard = props => {
   return(
     <div className="scores">
       <div id="player">
-        <h5 id="score1">player 1:&nbsp;</h5><h5 id="score1num">0</h5>
+        <h5 id="score1">player 1:&nbsp;</h5><h5 id="score1num">{scores.playerOne}</h5>
       </div>
       <div id="separator">
         <h5>&nbsp;&nbsp;</h5>
