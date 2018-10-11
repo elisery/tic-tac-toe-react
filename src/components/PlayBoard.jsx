@@ -54,6 +54,7 @@ class PlayBoard extends Component {
       // ADD OVERLAY
       // CALL UPDATE SCOREBOARD
       this.updateScore();
+      // console.log('scores from playboard', this.state.scores);
       // CALL RESET
       setTimeout(() => this.reset(), 1000);
     } else if (this.tie()) {
