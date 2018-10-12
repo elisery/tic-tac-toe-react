@@ -148,7 +148,6 @@ class PlayBoard extends Component {
       console.log('computer won');
       // ADD OVERLAY
       // CALL UPDATE SCOREBOARD
-      this.updateScore();
       // CALL RESET
       this.reset();
     } else if (this.tie()) {
@@ -191,6 +190,7 @@ class PlayBoard extends Component {
         (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
         this.setState({ winningArr: wc });
+        this.updateScore()
       }
     });
     return win;
