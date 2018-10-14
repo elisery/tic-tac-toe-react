@@ -56,7 +56,6 @@ class PlayBoard extends Component {
       //scoreboard not updating... how to call trigger component when settings
       //change?
       this.updateScore();
-      // console.log('scores from playboard', this.state.scores);
       // CALL RESET
       setTimeout(() => this.reset(), 1000);
     } else if (this.tie()) {
