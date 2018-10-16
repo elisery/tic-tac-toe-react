@@ -17,7 +17,7 @@ const Scoreboard = props => {
         <h5>&nbsp;&nbsp;</h5>
       </div>
       <div id="computer">
-        <h5 id="score2">{theGame}:&nbsp;</h5><h5 id="score2num">0</h5>
+        <h5 id="score2">{theGame}:&nbsp;</h5><h5 id="score2num">{scores.playerTwo}</h5>
       </div>
     </div>
   )
