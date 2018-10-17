@@ -3,10 +3,12 @@ import React from "react";
 const Scoreboard = props => {
   const { gameType, scores } = props;
   let theGame = gameType;
+  let secondScore;
 
   console.log('scoreboard', scores);
   
   theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
+  theGame === '2-player' ? secondScore = scores.playerTwo : secondScore = scores.computerPlayer;
   
   return(
     <div className="scores">
@@ -17,11 +19,10 @@ const Scoreboard = props => {
         <h5>&nbsp;&nbsp;</h5>
       </div>
       <div id="computer">
-        <h5 id="score2">{theGame}:&nbsp;</h5><h5 id="score2num">{scores.playerTwo}</h5>
+        <h5 id="score2">{theGame}:&nbsp;</h5><h5 id="score2num">{secondScore}</h5>
       </div>
     </div>
   )
-  
 }
 
 export default Scoreboard;
