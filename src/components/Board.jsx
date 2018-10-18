@@ -16,6 +16,7 @@ class Board extends Component {
         playerTwo: 0, 
         computerPlayer: 0
       }
+      //REMOVE SCORES FROM HERE - HAVE TO BE SET IN PLAYBOARD
     }
     this.setResetStatus = this.setResetStatus.bind(this);
     this.playerChoice = this.playerChoice.bind(this);
