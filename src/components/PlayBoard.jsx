@@ -9,7 +9,11 @@ class PlayBoard extends Component {
       playerOneToken: this.props.playerOneToken,
       playerTwoToken: this.props.playerTwoToken,
       computerToken: this.props.computerToken,
-      scores: this.props.scores,
+      scores: {
+        playerOne: 0, 
+        playerTwo: 0, 
+        computerPlayer: 0
+      },
       moveBoard: [
         ' ', ' ', ' ',
         ' ', ' ', ' ',

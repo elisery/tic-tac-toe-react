@@ -11,12 +11,7 @@ class Board extends Component {
       playerOneToken: '', 
       playerTwoToken: '',
       computerToken: '', 
-      scores: {
-        playerOne: 0, 
-        playerTwo: 0, 
-        computerPlayer: 0
-      }
-      //REMOVE SCORES FROM HERE - HAVE TO BE SET IN PLAYBOARD
+      scores: this.props.scores
     }
     this.setResetStatus = this.setResetStatus.bind(this);
     this.playerChoice = this.playerChoice.bind(this);
