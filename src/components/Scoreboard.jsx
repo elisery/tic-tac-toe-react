@@ -8,12 +8,14 @@ const Scoreboard = props => {
   console.log('scoreboard', scores);
   
   theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
-  theGame === '2-player' ? secondScore = scores.playerTwo : secondScore = scores.computerPlayer;
+  if (scores) {
+    theGame === '2-player' ? secondScore = scores.playerTwo : secondScore = scores.computerPlayer;
+  }
   
   return(
     <div className="scores">
       <div id="player">
-        <h5 id="score1">player 1:&nbsp;</h5><h5 id="score1num">{scores.playerOne}</h5>
+        <h5 id="score1">player 1:&nbsp;</h5>{scores && <h5 id="score1num">{scores.playerOne}</h5>}
       </div>
       <div id="separator">
         <h5>&nbsp;&nbsp;</h5>
