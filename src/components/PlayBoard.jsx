@@ -9,11 +9,11 @@ class PlayBoard extends Component {
       playerOneToken: this.props.playerOneToken,
       playerTwoToken: this.props.playerTwoToken,
       computerToken: this.props.computerToken,
-      scores: {
-        playerOne: 0, 
-        playerTwo: 0, 
-        computerPlayer: 0
-      },
+      // scores: {
+      //   playerOne: 0, 
+      //   playerTwo: 0, 
+      //   computerPlayer: 0
+      // },
       moveBoard: [
         ' ', ' ', ' ',
         ' ', ' ', ' ',
@@ -30,6 +30,20 @@ class PlayBoard extends Component {
     }
     this.move = this.move.bind(this);
   }
+
+  /*
+  - Board is PARENT to Screens & Settings
+  - Screens is parallel to Settings
+  - Playboard is within Screens
+  - Scoreboard is within Settings
+  
+  - Board holds state of score 
+  - Board has a function that sets the state of the score
+  - Board passes this function this.setScore to Screens then onSetScore to Playboard as props
+    - Playboard will call function onSetThisScore when the score is decided
+  - Board also passes the state of the score to Screens, Playboard, Settings & Scoreboard
+  */
+
   move(id) {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
@@ -221,8 +235,11 @@ class PlayBoard extends Component {
 
     I THINK scores object needs to be defined in the Board component and passed as props
     */
+
+    const { onSetScore, scores } = this.props;
     const winner = this.state.turn;
-    const theScores = this.state.scores;
+    // Make copy of scores
+    const theScores = scores;
     
     if (winner === 'playerOne') {
       theScores.playerOne = theScores.playerOne += 1;
@@ -232,7 +249,9 @@ class PlayBoard extends Component {
       theScores.computerPlayer = theScores.computerPlayer += 1;
     }
     // console.log(theScores);
-    this.setState({ scores: theScores });
+
+    // Pass updated theScores object to onSetScore
+    onSetScore(theScores);
   }
 
   reset() {

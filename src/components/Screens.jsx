@@ -11,10 +11,9 @@ const Screens = props => {
     computerToken,
     scores,
     onPlayerChoiceClick = () => {}, 
-    onTokenChoiceClick = () => {} 
+    onTokenChoiceClick = () => {},
+    setScore = () => {},
   } = props;
-
-  console.log(props);
 
   if (!gameType) {
     return(
@@ -32,6 +31,7 @@ const Screens = props => {
         playerTwoToken={playerTwoToken}
         computerToken={computerToken}
         scores={scores}
+        onSetScore={setScore}
       />
     )
   }
