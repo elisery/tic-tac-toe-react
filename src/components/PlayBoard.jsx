@@ -28,7 +28,7 @@ class PlayBoard extends Component {
       winningArr: [],
       turnCount: 1
     }
-    this.move = this.move.bind(this);
+    // this.move = this.move.bind(this);
   }
 
   /*
@@ -44,7 +44,7 @@ class PlayBoard extends Component {
   - Board also passes the state of the score to Screens, Playboard, Settings & Scoreboard
   */
 
-  move(id) {
+  move = (id) => {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
   
@@ -85,7 +85,7 @@ class PlayBoard extends Component {
   }
 
   // Check if square is available for a move
-  isEmpty(id) {
+  isEmpty = (id) => {
     if (this.state.moveBoard[id] === ' ') {
       return true;
     } else {
@@ -93,7 +93,7 @@ class PlayBoard extends Component {
     }
   }
  
-  computerMove() {
+  computerMove = () => {
     const arrayToBlock = this.closeToWin();
     let computerIndex;
     const cToken = this.state.computerToken;
@@ -177,7 +177,7 @@ class PlayBoard extends Component {
     }
   }
 
-  closeToWin() {
+  closeToWin = () => {
     let blockCombo;
     const mBoard = this.state.moveBoard;
     // If playerOne occupies two squares in a winning combo return that combo
@@ -198,7 +198,7 @@ class PlayBoard extends Component {
     return blockCombo;
   }
 
-  win() {
+  win = () => {
     let win = false;
     const moveBoard = this.state.moveBoard;
     this.state.winningCombos.forEach(wc => {
@@ -215,7 +215,7 @@ class PlayBoard extends Component {
     return win;
   }
 
-  tie() {
+  tie = () => {
     if (this.state.turnCount === 9 && !this.win('X') && !this.win('O')) {
       return true;
     } else {
@@ -223,7 +223,7 @@ class PlayBoard extends Component {
     }
   }
 
-  updateScore() {
+  updateScore = () => {
     // UPDATE SCORE HERE
     /*
     if either player wins, pass score to settings and to scoreboard
@@ -254,7 +254,7 @@ class PlayBoard extends Component {
     onSetScore(theScores);
   }
 
-  reset() {
+  reset = () => {
     // Reset board, turn, turnCount
     this.setState({ 
       moveBoard: [
