@@ -233,7 +233,10 @@ class PlayBoard extends Component {
     4. Board passes to Settings
     5. settings passes to scoreboard 
 
-    I THINK scores object needs to be defined in the Board component and passed as props
+    Jan 2019 note
+    get score object here and pass it back up to Board as props
+    receive function passed along from Board here as props and pass
+    score object through it
     */
 
     const { onSetScore, scores } = this.props;
