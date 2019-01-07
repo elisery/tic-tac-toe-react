@@ -3,7 +3,7 @@ import React from "react";
 const TokenChoice = props =>{
   const { onTokenClick = () => {} } = props;
 
-  return(
+  return (
     <div className="token-select chalkboard">
       <div className="message">
         <h2 id="two-player-message">Player 1</h2>

@@ -6,12 +6,14 @@ const Scoreboard = props => {
   let secondScore;
 
   console.log('scoreboard', scores);
+  // console.log('scores', scores)
+
   
   theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
   if (scores) {
     theGame === '2-player' ? secondScore = scores.playerTwo : secondScore = scores.computerPlayer;
   }
-  
+
   return(
     <div className="scores">
       <div id="player">

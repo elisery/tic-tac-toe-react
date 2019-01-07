@@ -31,19 +31,6 @@ class PlayBoard extends Component {
     // this.move = this.move.bind(this);
   }
 
-  /*
-  - Board is PARENT to Screens & Settings
-  - Screens is parallel to Settings
-  - Playboard is within Screens
-  - Scoreboard is within Settings
-  
-  - Board holds state of score 
-  - Board has a function that sets the state of the score
-  - Board passes this function this.setScore to Screens then onSetScore to Playboard as props
-    - Playboard will call function onSetThisScore when the score is decided
-  - Board also passes the state of the score to Screens, Playboard, Settings & Scoreboard
-  */
-
   move = (id) => {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
@@ -226,18 +213,27 @@ class PlayBoard extends Component {
   updateScore = () => {
     // UPDATE SCORE HERE
     /*
-    if either player wins, pass score to settings and to scoreboard
-    1. check this.state.turn
-    2. pass to Screens
-    3. Screens passes to Board
-    4. Board passes to Settings
-    5. settings passes to scoreboard 
 
     Jan 2019 note
     get score object here and pass it back up to Board as props
     receive function passed along from Board here as props and pass
     score object through it
     */
+
+     /*
+  - Board is PARENT to Screens & Settings
+  - Screens is parallel to Settings
+  - Playboard is within Screens
+  - Scoreboard is within Settings
+  
+  - Board holds state of score 
+  - Board has a function that sets the state of the score
+  - Board passes this function this.setScore to Screens then onSetScore to Playboard as props
+    - Playboard will call function onSetThisScore when the score is decided
+  - Board also passes the state of the score to Screens, Playboard, Settings & Scoreboard
+  PlayBoard => Screens => Board 
+  Board => Settings => Scoreboard
+  */
 
     const { onSetScore, scores } = this.props;
     const winner = this.state.turn;
@@ -251,8 +247,6 @@ class PlayBoard extends Component {
     } else {
       theScores.computerPlayer = theScores.computerPlayer += 1;
     }
-    // console.log(theScores);
-
     // Pass updated theScores object to onSetScore
     onSetScore(theScores);
   }
