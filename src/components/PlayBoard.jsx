@@ -34,7 +34,7 @@ class PlayBoard extends Component {
   move = (id) => {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
-  
+  // TODO: jan 7 2019 - set state of turn AFTER checking for win
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
