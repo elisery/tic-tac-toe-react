@@ -58,8 +58,7 @@ class PlayBoard extends Component {
       console.log('someone won'); 
       // ADD OVERLAY
       // CALL UPDATE SCOREBOARD
-      //scoreboard not updating... how to call trigger component when settings
-      //change?
+
       this.updateScore();
       // CALL RESET
       setTimeout(() => this.reset(), 1000);
