@@ -38,7 +38,7 @@ class PlayBoard extends Component {
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        this.setState({ turn: 'computer', turnCount: turnCount += 1 });
+        this.win() ? this.setState({ turn: 'computer', turnCount: turnCount += 1 }) : false;
         setTimeout(() => {
           this.computerMove();
         }, 1000);
@@ -49,7 +49,7 @@ class PlayBoard extends Component {
         this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 });
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
-        this.setState({ turn: 'playerOne', turnCount: turnCount += 1 });
+        this.win() ? this.setState({ turn: 'playerOne', turnCount: turnCount += 1 }) : false;
       }
     }
     this.setState({ moveBoard: theMoveBoard });
