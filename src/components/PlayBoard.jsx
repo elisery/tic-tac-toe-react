@@ -46,7 +46,7 @@ class PlayBoard extends Component {
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 });
+        this.win() ? this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) : false;
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
         this.win() ? this.setState({ turn: 'playerOne', turnCount: turnCount += 1 }) : false;
