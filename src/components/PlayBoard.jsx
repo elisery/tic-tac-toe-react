@@ -38,7 +38,7 @@ class PlayBoard extends Component {
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        this.win() ? this.setState({ turn: 'computer', turnCount: turnCount += 1 }) : false;
+        !this.win() ? this.setState({ turn: 'computer', turnCount: turnCount += 1 }) : false;
         setTimeout(() => {
           this.computerMove();
         }, 1000);
@@ -46,10 +46,10 @@ class PlayBoard extends Component {
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        this.win() ? this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) : false;
+        !this.win() ? this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) : false;
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
-        this.win() ? this.setState({ turn: 'playerOne', turnCount: turnCount += 1 }) : false;
+        !this.win() ? this.setState({ turn: 'playerOne', turnCount: turnCount += 1 }) : false;
       }
     }
     this.setState({ moveBoard: theMoveBoard });
@@ -147,19 +147,20 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard
     mBoard[computerIndex] = cToken;
-    this.setState({ moveBoard: mBoard, turn: 'playerOne',  turnCount: turnCount += 1  });
     // Check for a win & tie
     if (this.win()) {
       console.log('computer won');
-      // ADD OVERLAY
-      // CALL UPDATE SCOREBOARD
-      // CALL RESET
+      // TODO ADD OVERLAY
+      // TODO CALL UPDATE SCOREBOARD
+      // TODO CALL RESET
       this.reset();
     } else if (this.tie()) {
       console.log('there is a tie');
       // ADD OVERLAY
       // CALL RESET
       this.reset();
+    } else {
+      this.setState({ moveBoard: mBoard, turn: 'playerOne',  turnCount: turnCount += 1  });
     }
   }
 
