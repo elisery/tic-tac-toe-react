@@ -32,9 +32,9 @@ class PlayBoard extends Component {
   }
 
   move = (id) => {
+    // TODO: jan 15 - wait to reset after TIE screen
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
-  // TODO: jan 7 2019 - set state of turn AFTER checking for win
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
@@ -53,21 +53,23 @@ class PlayBoard extends Component {
       }
     }
     this.setState({ moveBoard: theMoveBoard });
-    
-    if (this.win()) {
-      console.log('someone won'); 
-      // ADD OVERLAY
-      // CALL UPDATE SCOREBOARD
-
-      this.updateScore();
-      // CALL RESET
-      setTimeout(() => this.reset(), 1000);
-    } else if (this.tie()) {
-      console.log('there is a tie');
-      // ADD OVERLAY
-      // CALL RESET
-      this.reset();
-    }
+    setTimeout(() => {
+      
+      if (this.win()) {
+        console.log('someone won'); 
+        // ADD OVERLAY
+        // CALL UPDATE SCOREBOARD
+  
+        this.updateScore();
+        // CALL RESET
+        setTimeout(() => this.reset(), 1000);
+      } else if (this.tie()) {
+        console.log('there is a tie');
+        // ADD OVERLAY
+        // CALL RESET
+        this.reset();
+      }
+    }, 1000);
   }
 
   // Check if square is available for a move
@@ -147,21 +149,26 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard
     mBoard[computerIndex] = cToken;
+    this.setState({ moveBoard: mBoard });
+
     // Check for a win & tie
-    if (this.win()) {
-      console.log('computer won');
-      // TODO ADD OVERLAY
-      // TODO CALL UPDATE SCOREBOARD
-      // TODO CALL RESET
-      this.reset();
-    } else if (this.tie()) {
-      console.log('there is a tie');
-      // ADD OVERLAY
-      // CALL RESET
-      this.reset();
-    } else {
-      this.setState({ moveBoard: mBoard, turn: 'playerOne',  turnCount: turnCount += 1  });
-    }
+
+    setTimeout(() => {
+      if (this.win()) {
+        console.log('computer won');
+        // TODO ADD OVERLAY
+        // TODO CALL UPDATE SCOREBOARD
+        // TODO CALL RESET
+        this.reset();
+      } else if (this.tie()) {
+        console.log('there is a tie');
+        // ADD OVERLAY
+        // CALL RESET
+        this.reset();
+      } else {
+        this.setState({ turn: 'playerOne',  turnCount: turnCount += 1  });
+      }
+    }, 1000);
   }
 
   closeToWin = () => {
@@ -212,14 +219,6 @@ class PlayBoard extends Component {
 
   updateScore = () => {
     // UPDATE SCORE HERE
-    /*
-
-    Jan 2019 note
-    get score object here and pass it back up to Board as props
-    receive function passed along from Board here as props and pass
-    score object through it
-    */
-
      /*
   - Board is PARENT to Screens & Settings
   - Screens is parallel to Settings
