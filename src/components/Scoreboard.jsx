@@ -4,10 +4,6 @@ const Scoreboard = props => {
   const { gameType, scores } = props;
   let theGame = gameType;
   let secondScore;
-
-  console.log('scoreboard', scores);
-  // console.log('scores', scores)
-
   
   theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
   if (scores) {

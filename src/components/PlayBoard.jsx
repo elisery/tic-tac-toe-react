@@ -9,11 +9,6 @@ class PlayBoard extends Component {
       playerOneToken: this.props.playerOneToken,
       playerTwoToken: this.props.playerTwoToken,
       computerToken: this.props.computerToken,
-      // scores: {
-      //   playerOne: 0, 
-      //   playerTwo: 0, 
-      //   computerPlayer: 0
-      // },
       moveBoard: [
         ' ', ' ', ' ',
         ' ', ' ', ' ',
@@ -26,35 +21,34 @@ class PlayBoard extends Component {
       ],
       turn: 'playerOne',
       winningArr: [],
-      turnCount: 1
+      turnCount: 0
     }
-    // this.move = this.move.bind(this);
   }
 
   move = (id) => {
-    // TODO: jan 15 - wait to reset after TIE screen
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        !this.win() ? this.setState({ turn: 'computer', turnCount: turnCount += 1 }) : false;
+        if (!this.win()) { this.setState({ turn: 'computer', turnCount: turnCount += 1 }) }
         setTimeout(() => {
           this.computerMove();
         }, 1000);
       } 
     } else {
+      // TODO: FIX SCORE BUG WITH TWO PLAYER GAME - SCORE NOT ACCURATE
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        !this.win() ? this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) : false;
+        if (!this.win()) { this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) };
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
-        !this.win() ? this.setState({ turn: 'playerOne', turnCount: turnCount += 1 }) : false;
+        if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-    this.setState({ moveBoard: theMoveBoard });
+    
+    this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
-      
       if (this.win()) {
         console.log('someone won'); 
         // ADD OVERLAY
@@ -67,8 +61,9 @@ class PlayBoard extends Component {
         console.log('there is a tie');
         // ADD OVERLAY
         // CALL RESET
-        this.reset();
-      }
+        setTimeout(() => this.reset(), 1000); 
+        this.reset()
+      } 
     }, 1000);
   }
 
@@ -89,7 +84,6 @@ class PlayBoard extends Component {
     const mBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
     // If playerOne is not close to winning
-    console.log('array to block', arrayToBlock);
     if (arrayToBlock === undefined) {
       this.state.winningCombos.forEach(wc => {
         let index1 = wc[0];
