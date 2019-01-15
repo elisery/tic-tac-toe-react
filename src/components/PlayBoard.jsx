@@ -197,7 +197,7 @@ class PlayBoard extends Component {
         (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
         this.setState({ winningArr: wc });
-        this.updateScore()
+        // this.updateScore()
       }
     });
     return win;
@@ -241,6 +241,7 @@ class PlayBoard extends Component {
       theScores.computerPlayer = theScores.computerPlayer += 1;
     }
     // Pass updated theScores object to onSetScore
+console.log(theScores)
     onSetScore(theScores);
   }
 
