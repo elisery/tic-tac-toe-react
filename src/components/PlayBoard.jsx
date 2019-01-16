@@ -62,7 +62,7 @@ class PlayBoard extends Component {
         // ADD OVERLAY
         // CALL RESET
         setTimeout(() => this.reset(), 1000); 
-        this.reset()
+        // this.reset()
       } 
     }, 1000);
   }
