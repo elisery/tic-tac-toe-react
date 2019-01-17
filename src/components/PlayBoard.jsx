@@ -232,7 +232,7 @@ class PlayBoard extends Component {
     const winner = this.state.turn;
     // Make copy of scores
     const theScores = scores;
-    
+ debugger   
     if (winner === 'playerOne') {
       theScores.playerOne = theScores.playerOne += 1;
     } else if (winner === 'playerTwo') {
@@ -243,6 +243,7 @@ class PlayBoard extends Component {
     // Pass updated theScores object to onSetScore
 console.log(theScores)
     onSetScore(theScores);
+    this.reset();
   }
 
   reset = () => {
