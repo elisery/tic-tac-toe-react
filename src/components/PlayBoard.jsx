@@ -37,7 +37,6 @@ class PlayBoard extends Component {
         }, 1000);
       } 
     } else {
-      // TODO: FIX SCORE BUG WITH TWO PLAYER GAME - SCORE NOT ACCURATE
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win()) { this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) };
@@ -146,7 +145,6 @@ class PlayBoard extends Component {
     this.setState({ moveBoard: mBoard });
 
     // Check for a win & tie
-
     setTimeout(() => {
       if (this.win()) {
         console.log('computer won');
@@ -197,7 +195,6 @@ class PlayBoard extends Component {
         (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
         this.setState({ winningArr: wc });
-        // this.updateScore()
       }
     });
     return win;
@@ -232,7 +229,6 @@ class PlayBoard extends Component {
     const winner = this.state.turn;
     // Make copy of scores
     const theScores = scores;
- debugger   
     if (winner === 'playerOne') {
       theScores.playerOne = theScores.playerOne += 1;
     } else if (winner === 'playerTwo') {
@@ -241,7 +237,6 @@ class PlayBoard extends Component {
       theScores.computerPlayer = theScores.computerPlayer += 1;
     }
     // Pass updated theScores object to onSetScore
-console.log(theScores)
     onSetScore(theScores);
     this.reset();
   }

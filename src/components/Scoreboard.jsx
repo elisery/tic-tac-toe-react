@@ -2,12 +2,12 @@ import React from "react";
 
 const Scoreboard = props => {
   const { gameType, scores } = props;
-  let theGame = gameType;
+  let theGame;
   let secondScore;
   
-  theGame === '2-player' ? theGame = 'player 2' : theGame = 'computer';
+  gameType === '2-player' ? theGame = 'player 2' : theGame = 'computer';
   if (scores) {
-    theGame === '2-player' ? secondScore = scores.playerTwo : secondScore = scores.computerPlayer;
+    gameType === '2-player' ? secondScore = scores.playerTwo : secondScore = scores.computerPlayer;
   }
 
   return(

@@ -35,8 +35,6 @@ const Screens = props => {
       />
     )
   }
-  
-  
 }
 
 export default Screens;
