@@ -50,18 +50,16 @@ class PlayBoard extends Component {
     setTimeout(() => {
       if (this.win()) {
         console.log('someone won'); 
-        // ADD OVERLAY
-        // CALL UPDATE SCOREBOARD
-  
+        // TODO ADD OVERLAY
+        // TODO CALL UPDATE SCOREBOARD
         this.updateScore();
-        // CALL RESET
+        // Call reset()
         setTimeout(() => this.reset(), 1000);
       } else if (this.tie()) {
         console.log('there is a tie');
-        // ADD OVERLAY
-        // CALL RESET
+        // TODO ADD OVERLAY
+        // Call reset()
         setTimeout(() => this.reset(), 1000); 
-        // this.reset()
       } 
     }, 1000);
   }
@@ -151,12 +149,13 @@ class PlayBoard extends Component {
         // TODO ADD OVERLAY
         // TODO CALL UPDATE SCOREBOARD
         // TODO CALL RESET
-        this.reset();
+        
+        setTimeout(() => this.reset(), 1000);
       } else if (this.tie()) {
         console.log('there is a tie');
         // ADD OVERLAY
         // CALL RESET
-        this.reset();
+        setTimeout(() => this.reset(), 1000);
       } else {
         this.setState({ turn: 'playerOne',  turnCount: turnCount += 1  });
       }
