@@ -54,7 +54,7 @@ class PlayBoard extends Component {
         // TODO CALL UPDATE SCOREBOARD
         this.updateScore();
         // Call reset()
-        setTimeout(() => this.reset(), 1000);
+        // setTimeout(() => this.reset(), 1000);
       } else if (this.tie()) {
         console.log('there is a tie');
         // TODO ADD OVERLAY
@@ -237,7 +237,8 @@ class PlayBoard extends Component {
     }
     // Pass updated theScores object to onSetScore
     onSetScore(theScores);
-    this.reset();
+    // this.reset();
+    setTimeout(() => this.reset(), 1000);
   }
 
   reset = () => {
