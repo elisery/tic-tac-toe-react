@@ -45,7 +45,7 @@ class PlayBoard extends Component {
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-    
+//TODO: FIX bug with tie game
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
@@ -237,7 +237,7 @@ class PlayBoard extends Component {
     }
     // Pass updated theScores object to onSetScore
     onSetScore(theScores);
-    // this.reset();
+    // Reset board with delay
     setTimeout(() => this.reset(), 1000);
   }
 
