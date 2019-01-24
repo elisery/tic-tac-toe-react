@@ -45,7 +45,7 @@ class PlayBoard extends Component {
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-//TODO: FIX bug with tie game
+//TODO: FIX bug with tie game - second tie does not reset game
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
