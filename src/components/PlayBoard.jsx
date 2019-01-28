@@ -140,8 +140,8 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard
     mBoard[computerIndex] = cToken;
-    this.setState({ moveBoard: mBoard });
-
+    
+    this.setState({ moveBoard: mBoard, turnCount: turnCount += 1 });
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
@@ -156,7 +156,7 @@ class PlayBoard extends Component {
 
         setTimeout(() => this.reset(), 500);
       } else {
-        this.setState({ turn: 'playerOne',  turnCount: turnCount += 1  });
+        this.setState({ turn: 'playerOne' });
       }
     }, 1000);
   }
@@ -199,7 +199,8 @@ class PlayBoard extends Component {
   }
 
   tie = () => {
-    if (this.state.turnCount === 9 && !this.win('X') && !this.win('O')) {
+  console.log(this.state.turnCount)
+    if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
       return true;
     } else {
       return false;
@@ -249,7 +250,7 @@ class PlayBoard extends Component {
       ' ', ' ', ' '
       ],
       turn: 'playerOne',
-      turnCount: 1
+      turnCount: 0
     }); 
     // REMOVE OVERLAY
   }
