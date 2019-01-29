@@ -208,7 +208,6 @@ class PlayBoard extends Component {
   }
 
   updateScore = () => {
-    // UPDATE SCORE HERE
      /*
   - Board is PARENT to Screens & Settings
   - Screens is parallel to Settings
