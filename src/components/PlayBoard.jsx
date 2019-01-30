@@ -45,13 +45,13 @@ class PlayBoard extends Component {
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-//TODO: FIX bug with tie game - second tie does not reset game
+
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
         console.log('someone won'); 
         // TODO ADD OVERLAY
-
+//TODO: game not registering when i win - lets computer play
         this.updateScore();
 
         // setTimeout(() => this.reset(), 1000);
@@ -151,9 +151,9 @@ class PlayBoard extends Component {
         this.updateScore();
 
       } else if (this.tie()) {
-        console.log('there is a tie');
+        console.log('computer tie');
         // ADD OVERLAY
-
+//TODO: tie happens too fast
         setTimeout(() => this.reset(), 500);
       } else {
         this.setState({ turn: 'playerOne' });
