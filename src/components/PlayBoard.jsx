@@ -140,7 +140,7 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard
     mBoard[computerIndex] = cToken;
-    this.setState({ moveBoard: mBoard, turnCount: turnCount += 1 });
+
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
@@ -158,7 +158,7 @@ class PlayBoard extends Component {
         this.setState({ turn: 'playerOne' });
       }
     }, 1000);
-    
+    this.setState({ moveBoard: mBoard, turnCount: turnCount += 1 });  
   }
 
   closeToWin = () => {
