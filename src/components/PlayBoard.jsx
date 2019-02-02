@@ -74,11 +74,10 @@ class PlayBoard extends Component {
   }
  
   computerMove = () => {
+    const { computerToken, playerOneToken } = this.state;
     const arrayToBlock = this.closeToWin();
-    let computerIndex;
-    const cToken = this.state.computerToken;
-    const pToken = this.state.playerOneToken;
     const mBoard = this.state.moveBoard;
+    let computerIndex;
     let turnCount = this.state.turnCount;
     // If playerOne is not close to winning
     if (arrayToBlock === undefined) {
@@ -92,35 +91,35 @@ class PlayBoard extends Component {
           return;
         }
         // If two squares of a winning combo are selected, pick the third
-        if (mBoard[index1] === cToken && mBoard[index2] === cToken && mBoard[index3] === ' ' ) {
+        if (mBoard[index1] === computerToken && mBoard[index2] === computerToken && mBoard[index3] === ' ' ) {
           computerIndex = index3;
           return;
-        } else if (mBoard[index1] === cToken && mBoard[index2] === ' ' && mBoard[index3] === cToken) {
+        } else if (mBoard[index1] === computerToken && mBoard[index2] === ' ' && mBoard[index3] === computerToken) {
           computerIndex = index2;
           return;
-        } else if (mBoard[index1] === ' ' && mBoard[index2] === cToken && mBoard[index3] === cToken) {
+        } else if (mBoard[index1] === ' ' && mBoard[index2] === computerToken && mBoard[index3] === computerToken) {
           computerIndex = index1;
           return;
         }
         // If one square in a winning combo is selected, pick the adjacent
-        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === cToken) {
+        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === computerToken) {
           computerIndex = index2;
           return;
-        } else if (mBoard[index1] === ' ' && mBoard[index2] === cToken && mBoard[index3] === ' ') {
+        } else if (mBoard[index1] === ' ' && mBoard[index2] === computerToken && mBoard[index3] === ' ') {
           computerIndex = index3;
           return;
-        } else if (mBoard[index1] === cToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
+        } else if (mBoard[index1] === computerToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
           computerIndex = index2;
           return;
         }
         // If one square in a winning combo is selected by playerOne, pick the adjacent
-        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === pToken) {
+        if (mBoard[index1] === ' ' && mBoard[index2] === ' ' && mBoard[index3] === playerOneToken) {
           computerIndex = index2;
           return;
-        } else if (mBoard[index1] === ' ' && mBoard[index2] === pToken && mBoard[index3] === ' ') {
+        } else if (mBoard[index1] === ' ' && mBoard[index2] === playerOneToken && mBoard[index3] === ' ') {
           computerIndex = index3;
           return;
-        } else if (mBoard[index1] === pToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
+        } else if (mBoard[index1] === playerOneToken && mBoard[index2] === ' ' && mBoard[index3] === ' ') {
           computerIndex = index2;
           return;
         }
@@ -139,7 +138,7 @@ class PlayBoard extends Component {
       });
     }
     // Update the moveBoard
-    mBoard[computerIndex] = cToken;
+    mBoard[computerIndex] = computerToken;
 
     // Check for a win & tie
     setTimeout(() => {
