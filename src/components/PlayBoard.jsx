@@ -28,13 +28,16 @@ class PlayBoard extends Component {
   move = (id) => {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
+
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
-        if (!this.win()) { this.setState({ turn: 'computer', turnCount: turnCount += 1 }) }
-        setTimeout(() => {
-          this.computerMove();
-        }, 1000);
+        if (!this.win() && !this.tie()) { 
+          this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
+          setTimeout(() => {
+            this.computerMove();
+          }, 1000);
+        } 
       } 
     } else {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
@@ -199,7 +202,7 @@ class PlayBoard extends Component {
 
   tie = () => {
   console.log(this.state.turnCount)
-    if (this.state.turnCount === 9 && !this.win('X') && !this.win('O')) {
+    if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
       return true;
     } else {
       return false;
