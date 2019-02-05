@@ -48,13 +48,12 @@ class PlayBoard extends Component {
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-
+//TODO: tie goes too fast
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
         console.log('someone won'); 
         // TODO ADD OVERLAY
-//TODO: game not registering when i win - lets computer play
         this.updateScore();
 
         // setTimeout(() => this.reset(), 1000);
