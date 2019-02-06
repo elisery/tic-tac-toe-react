@@ -48,7 +48,7 @@ class PlayBoard extends Component {
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-//TODO: tie goes too fast
+//TODO: tie goes too fast - has to do with the turncount
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
