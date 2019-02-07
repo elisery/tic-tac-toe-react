@@ -60,7 +60,7 @@ class PlayBoard extends Component {
       } else if (this.tie()) {
         console.log('there is a tie');
         // TODO ADD OVERLAY
-
+        console.log(this.state.turnCount)
         setTimeout(() => this.reset(), 800); 
       } 
     }, 1000);
@@ -141,7 +141,8 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard
     mBoard[computerIndex] = computerToken;
-
+    this.setState({ moveBoard: mBoard, turnCount: turnCount += 1 }); 
+  console.log(this.state.turnCount)
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
@@ -149,7 +150,6 @@ class PlayBoard extends Component {
         // TODO ADD OVERLAY
 
         this.updateScore();
-
       } else if (this.tie()) {
         console.log('computer tie');
         // ADD OVERLAY
@@ -158,8 +158,7 @@ class PlayBoard extends Component {
       } else {
         this.setState({ turn: 'playerOne' });
       }
-    }, 1000);
-    this.setState({ moveBoard: mBoard, turnCount: turnCount += 1 });  
+    }, 1000);   
   }
 
   closeToWin = () => {
@@ -200,7 +199,6 @@ class PlayBoard extends Component {
   }
 
   tie = () => {
-  console.log(this.state.turnCount)
     if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
       return true;
     } else {
