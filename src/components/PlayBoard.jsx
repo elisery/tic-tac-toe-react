@@ -48,15 +48,12 @@ class PlayBoard extends Component {
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
       }
     }
-//TODO: tie goes too fast - has to do with the turncount
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
         console.log('someone won'); 
         // TODO ADD OVERLAY
         this.updateScore();
-
-        // setTimeout(() => this.reset(), 1000);
       } else if (this.tie()) {
         console.log('there is a tie');
         // TODO ADD OVERLAY
@@ -140,7 +137,6 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard and turncount
     mBoard[computerIndex] = computerToken;
-    this.setState({ moveBoard: mBoard, turnCount: turnCount += 1 }); 
   console.log(this.state.turnCount)
     // Check for a win & tie
     setTimeout(() => {
@@ -151,10 +147,9 @@ class PlayBoard extends Component {
       } else if (this.tie()) {
         console.log('computer tie');
         // ADD OVERLAY
-//TODO: turn count is going up to 10!!!
         
       } else {
-        this.setState({ turn: 'playerOne' });
+        this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
       }
     }, 1000);   
   }
@@ -198,7 +193,7 @@ class PlayBoard extends Component {
 
   tie = () => {
     if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
-      setTimeout(() => this.reset(), 800);
+      setTimeout(() => this.reset(), 1000);
       return true;
     } else {
       return false;
