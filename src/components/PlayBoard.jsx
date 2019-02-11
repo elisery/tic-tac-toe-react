@@ -70,6 +70,13 @@ class PlayBoard extends Component {
       return false;
     }
   }
+
+  // Render overlay
+  renderOverlay = (winner, tie) => {
+    // winner is the name of the winner - playerOne, playerTwo or computer
+    // tie is boolean
+    console.log('overlay!')
+  }
  
   computerMove = () => {
     const { computerToken, playerOneToken } = this.state;
