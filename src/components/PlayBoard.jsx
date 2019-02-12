@@ -72,10 +72,10 @@ class PlayBoard extends Component {
   }
 
   // Render overlay
-  renderOverlay = (winner, tie) => {
+  renderWinnerOverlay = (winner) => {
     // winner is the name of the winner - playerOne, playerTwo or computer
     // tie is boolean
-    console.log('overlay!')
+    console.log(winner, 'wins!')
   }
  
   computerMove = () => {
@@ -195,6 +195,7 @@ class PlayBoard extends Component {
         this.setState({ winningArr: wc });
       }
     });
+    if (win) this.renderWinnerOverlay(this.state.turn)
     return win;
   }
 
