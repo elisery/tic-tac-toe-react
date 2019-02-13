@@ -74,8 +74,12 @@ class PlayBoard extends Component {
   // Render overlay
   renderWinnerOverlay = (winner) => {
     // winner is the name of the winner - playerOne, playerTwo or computer
-    // tie is boolean
+    // add delay here
     console.log(winner, 'wins!')
+  }
+
+  renderTieOverlay = () => {
+    console.log('it\'s a tie');
   }
  
   computerMove = () => {
@@ -195,13 +199,16 @@ class PlayBoard extends Component {
         this.setState({ winningArr: wc });
       }
     });
-    if (win) this.renderWinnerOverlay(this.state.turn)
     return win;
   }
 
   tie = () => {
     if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
-      setTimeout(() => this.reset(), 1000);
+
+      setTimeout(() => {
+        this.renderTieOverlay();
+        this.reset();
+      }, 1000);
       return true;
     } else {
       return false;
@@ -238,7 +245,10 @@ class PlayBoard extends Component {
     // Pass updated theScores object to onSetScore
     onSetScore(theScores);
     // Reset board with delay
-    setTimeout(() => this.reset(), 1000);
+    setTimeout(() => {
+      this.renderWinnerOverlay(winner);
+      this.reset();
+    }, 1000); 
   }
 
   reset = () => {
