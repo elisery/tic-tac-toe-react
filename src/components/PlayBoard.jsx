@@ -51,11 +51,9 @@ class PlayBoard extends Component {
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
-        console.log('someone won'); 
         // TODO ADD OVERLAY
         this.updateScore();
       } else if (this.tie()) {
-        console.log('there is a tie');
         // TODO ADD OVERLAY
         console.log(this.state.turnCount)
       } 
@@ -152,13 +150,10 @@ class PlayBoard extends Component {
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
-        console.log('computer won');
         // TODO ADD OVERLAY
         this.updateScore();
       } else if (this.tie()) {
-        console.log('computer tie');
         // ADD OVERLAY
-        
       } else {
         this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
       }
