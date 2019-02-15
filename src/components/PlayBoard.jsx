@@ -34,6 +34,7 @@ class PlayBoard extends Component {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win() && !this.tie()) { 
           this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
+          // TODO: debug visual turn flag and raise it here
           setTimeout(() => {
             this.computerMove();
           }, 1000);
@@ -43,9 +44,11 @@ class PlayBoard extends Component {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win()) { this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) };
+        // TODO: debug visual turn flag and raise it here
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
+        // TODO: debug visual turn flag and raise it here
       }
     }
     this.setState({ moveBoard: theMoveBoard });      
@@ -55,7 +58,6 @@ class PlayBoard extends Component {
         this.updateScore();
       } else if (this.tie()) {
         // TODO ADD OVERLAY
-        console.log(this.state.turnCount)
       } 
     }, 1000);
   }
@@ -156,6 +158,7 @@ class PlayBoard extends Component {
         // ADD OVERLAY
       } else {
         this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
+        // TODO: debug visual turn flag and raise it here
       }
     }, 1000);   
   }
@@ -258,6 +261,7 @@ class PlayBoard extends Component {
       turnCount: 0
     }); 
     // REMOVE OVERLAY
+    // TODO: debug visual turn flag and raise it here
   }
 
   render() {
