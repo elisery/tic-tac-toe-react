@@ -7,6 +7,8 @@ class Status extends Component {
 
     }
   }
+
+  // TODO: create function to render individual divs
   render() {
     return(
       <div className="status">
