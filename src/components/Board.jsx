@@ -59,6 +59,7 @@ class Board extends Component {
 
   render() {
     const { gameType, playerOneToken, playerTwoToken, computerToken, scores } = this.state;
+    const { setTurnState } = this.props;
     return (
       <div className="board main-shadow">
         <Settings onResetClick={this.setResetStatus} gameType={gameType} scores={scores} />
@@ -71,6 +72,7 @@ class Board extends Component {
           computerToken={computerToken}
           scores={scores}
           setScore={this.setScore}
+          onSetTurnState={setTurnState}
         />
       </div>
     )

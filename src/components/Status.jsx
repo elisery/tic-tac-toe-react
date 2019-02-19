@@ -8,8 +8,20 @@ class Status extends Component {
     }
   }
 
-  // TODO: create function to render individual divs
+  renderFlag = () => {
+    const { theTurn } = this.props;
+//TODO: add logic below to get proper id for h3 tag
+    return (
+      <div className="turn">
+        <h3>
+          {`Go ${theTurn}`}
+        </h3>
+      </div>
+    )
+  }
+
   render() {
+    console.log(this.props.theTurn)
     return(
       <div className="status">
         <div className="turn">

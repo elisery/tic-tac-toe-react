@@ -28,6 +28,8 @@ class PlayBoard extends Component {
   move = (id) => {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
+    const { onSetTheTurnState } = this.props;
+    const { turn } = this.state;
 
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
@@ -60,6 +62,9 @@ class PlayBoard extends Component {
         // TODO ADD OVERLAY
       } 
     }, 1000);
+  
+    // Set turn flag in GameLayout Component
+    onSetTheTurnState(turn);
   }
 
   // Check if square is available for a move
@@ -83,11 +88,14 @@ class PlayBoard extends Component {
   }
  
   computerMove = () => {
-    const { computerToken, playerOneToken } = this.state;
+    const { computerToken, playerOneToken, turn } = this.state;
+    const { onSetTheTurnState } = this.props;
     const arrayToBlock = this.closeToWin();
     const mBoard = this.state.moveBoard;
     let computerIndex;
     let turnCount = this.state.turnCount;
+
+    onSetTheTurnState(turn);
     // If playerOne is not close to winning
     if (arrayToBlock === undefined) {
       this.state.winningCombos.forEach(wc => {

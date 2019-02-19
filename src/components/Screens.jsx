@@ -13,6 +13,7 @@ const Screens = props => {
     onPlayerChoiceClick = () => {}, 
     onTokenChoiceClick = () => {},
     setScore = () => {},
+    onSetTurnState = () => {},
   } = props;
 
   if (!gameType) {
@@ -32,6 +33,7 @@ const Screens = props => {
         computerToken={computerToken}
         scores={scores}
         onSetScore={setScore}
+        onSetTheTurnState={onSetTurnState}
       />
     )
   }
