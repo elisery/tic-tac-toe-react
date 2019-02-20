@@ -1,5 +1,20 @@
 import React, { Component } from "react";
 
+const playerTurn = {
+  "playerOne": {
+    id: "player1-turn",
+    message: "Player 1"
+  },
+  'playerTwo': {
+    id: "player2-turn",
+    message: "Player 2",
+  },
+  'computer': {
+    id: "computer-turn",
+    message: "Computer"
+  },
+}
+
 class Status extends Component {
   constructor(props) {
     super(props);
@@ -11,12 +26,16 @@ class Status extends Component {
   renderFlag = () => {
     const { theTurn } = this.props;
 //TODO: add logic below to get proper id for h3 tag
+// playerOne playerTwo computer
     return (
-      <div className="turn">
-        <h3>
-          {`Go ${theTurn}`}
-        </h3>
-      </div>
+      theTurn 
+        && (
+          <div className="turn">
+            <h3 id={`${playerTurn[theTurn].id}`}>
+              {`Go ${playerTurn[theTurn].message}!`}
+            </h3>
+          </div>
+        )
     )
   }
 
@@ -24,15 +43,7 @@ class Status extends Component {
     console.log(this.props.theTurn)
     return(
       <div className="status">
-        <div className="turn">
-          <h3 id="player1-turn">Go Player 1!</h3>
-        </div>
-        <div className="turn">
-          <h3 id="player2-turn">Go Player 2!</h3>
-        </div>
-        <div className="turn">
-          <h3 id="computer-turn">Computer!</h3>
-        </div>
+        {this.renderFlag()}
       </div>
     )
   }
