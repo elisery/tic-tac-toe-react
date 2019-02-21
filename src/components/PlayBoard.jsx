@@ -38,6 +38,7 @@ class PlayBoard extends Component {
           this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
           // TODO: debug visual turn flag and raise it here
           setTimeout(() => {
+            onSetTheTurnState(turn);
             this.computerMove();
           }, 1000);
         } 
