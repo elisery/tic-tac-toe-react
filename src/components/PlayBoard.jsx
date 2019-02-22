@@ -30,15 +30,15 @@ class PlayBoard extends Component {
     let turnCount = this.state.turnCount;
     const { onSetTheTurnState } = this.props;
     const { turn } = this.state;
-
+    onSetTheTurnState(turn);
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win() && !this.tie()) { 
           this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
           // TODO: debug visual turn flag and raise it here
+          onSetTheTurnState(turn);
           setTimeout(() => {
-            onSetTheTurnState(turn);
             this.computerMove();
           }, 1000);
         } 
@@ -54,6 +54,7 @@ class PlayBoard extends Component {
         // TODO: debug visual turn flag and raise it here
       }
     }
+
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
@@ -65,7 +66,7 @@ class PlayBoard extends Component {
     }, 1000);
   
     // Set turn flag in GameLayout Component
-    onSetTheTurnState(turn);
+    // onSetTheTurnState(turn);
   }
 
   // Check if square is available for a move
@@ -95,7 +96,6 @@ class PlayBoard extends Component {
     const mBoard = this.state.moveBoard;
     let computerIndex;
     let turnCount = this.state.turnCount;
-
     onSetTheTurnState(turn);
     // If playerOne is not close to winning
     if (arrayToBlock === undefined) {
@@ -158,6 +158,7 @@ class PlayBoard extends Component {
     // Update the moveBoard and turncount
     mBoard[computerIndex] = computerToken;
   console.log(this.state.turnCount)
+
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
@@ -168,6 +169,7 @@ class PlayBoard extends Component {
       } else {
         this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
         // TODO: debug visual turn flag and raise it here
+        onSetTheTurnState(turn);
       }
     }, 1000);   
   }
