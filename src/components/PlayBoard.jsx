@@ -25,6 +25,12 @@ class PlayBoard extends Component {
     }
   }
 
+  componentDidMount() {
+    const { turn } = this.state;
+    const { onSetTheTurnState } = this.props;
+    onSetTheTurnState(turn);
+  }
+
   move = (id) => {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
@@ -96,7 +102,7 @@ class PlayBoard extends Component {
     const mBoard = this.state.moveBoard;
     let computerIndex;
     let turnCount = this.state.turnCount;
-    onSetTheTurnState(turn);
+
     // If playerOne is not close to winning
     if (arrayToBlock === undefined) {
       this.state.winningCombos.forEach(wc => {
