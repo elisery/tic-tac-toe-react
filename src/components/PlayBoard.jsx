@@ -36,16 +36,15 @@ class PlayBoard extends Component {
     let turnCount = this.state.turnCount;
     const { onSetTheTurnState } = this.props;
     const { turn } = this.state;
-    onSetTheTurnState(turn);
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win() && !this.tie()) { 
           this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
           // TODO: debug visual turn flag and raise it here
-          onSetTheTurnState(turn);
           setTimeout(() => {
             this.computerMove();
+            onSetTheTurnState(turn);
           }, 1000);
         } 
       } 
@@ -177,8 +176,9 @@ class PlayBoard extends Component {
         // TODO: debug visual turn flag and raise it here
         onSetTheTurnState(turn);
       }
-    }, 1000);   
+    }, 1000);  
   }
+
 
   closeToWin = () => {
     let blockCombo;
