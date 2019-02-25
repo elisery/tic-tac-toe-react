@@ -35,16 +35,16 @@ class PlayBoard extends Component {
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
     const { onSetTheTurnState } = this.props;
-    const { turn } = this.state;
+
     if (this.state.gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win() && !this.tie()) { 
           this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
-          // TODO: debug visual turn flag and raise it here
+          // Raise turn flag
+          onSetTheTurnState('computer');
           setTimeout(() => {
             this.computerMove();
-            onSetTheTurnState(turn);
           }, 1000);
         } 
       } 
@@ -52,11 +52,13 @@ class PlayBoard extends Component {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win()) { this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) };
-        // TODO: debug visual turn flag and raise it here
+        // Raise turn flag
+        onSetTheTurnState('playerTwo');
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
-        // TODO: debug visual turn flag and raise it here
+        // Raise turn flag
+        onSetTheTurnState('playerOne');
       }
     }
 
@@ -69,9 +71,6 @@ class PlayBoard extends Component {
         // TODO ADD OVERLAY
       } 
     }, 1000);
-  
-    // Set turn flag in GameLayout Component
-    // onSetTheTurnState(turn);
   }
 
   // Check if square is available for a move
@@ -95,7 +94,7 @@ class PlayBoard extends Component {
   }
  
   computerMove = () => {
-    const { computerToken, playerOneToken, turn } = this.state;
+    const { computerToken, playerOneToken } = this.state;
     const { onSetTheTurnState } = this.props;
     const arrayToBlock = this.closeToWin();
     const mBoard = this.state.moveBoard;
@@ -162,8 +161,6 @@ class PlayBoard extends Component {
     }
     // Update the moveBoard and turncount
     mBoard[computerIndex] = computerToken;
-  console.log(this.state.turnCount)
-
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
@@ -173,8 +170,8 @@ class PlayBoard extends Component {
         // ADD OVERLAY
       } else {
         this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
-        // TODO: debug visual turn flag and raise it here
-        onSetTheTurnState(turn);
+        // Raise turn flag
+        onSetTheTurnState('playerOne');
       }
     }, 1000);  
   }
@@ -278,7 +275,7 @@ class PlayBoard extends Component {
       turnCount: 0
     }); 
     // REMOVE OVERLAY
-    // TODO: debug visual turn flag and raise it here
+    // TODO: Reset turn flag
   }
 
   render() {
