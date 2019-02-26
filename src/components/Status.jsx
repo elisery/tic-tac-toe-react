@@ -22,11 +22,9 @@ class Status extends Component {
 
     }
   }
-
+//TODO: reset on clicking 'reset' in settings
   renderFlag = () => {
     const { theTurn } = this.props;
-//TODO: add logic below to get proper id for h3 tag
-// playerOne playerTwo computer
     return (
       theTurn 
         && (
@@ -40,7 +38,6 @@ class Status extends Component {
   }
 
   render() {
-    console.log(this.props.theTurn)
     return(
       <div className="status">
         {this.renderFlag()}

@@ -11,8 +11,7 @@ const Settings = props => {
         <button onClick={() => onResetClick()} id="reset">Reset</button>
       </div>
     </div>
-  )
-  
+  )  
 }
 
 export default Settings;

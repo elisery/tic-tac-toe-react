@@ -264,6 +264,8 @@ class PlayBoard extends Component {
   }
 
   reset = () => {
+    const { turn } = this.state;
+    const { onSetTheTurnState } = this.props;
     // Reset board, turn, turnCount
     this.setState({ 
       moveBoard: [
@@ -275,7 +277,8 @@ class PlayBoard extends Component {
       turnCount: 0
     }); 
     // REMOVE OVERLAY
-    // TODO: Reset turn flag
+    // Reset turn flag
+    onSetTheTurnState(turn);
   }
 
   render() {
