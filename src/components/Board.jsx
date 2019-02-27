@@ -17,9 +17,6 @@ class Board extends Component {
         computerPlayer: 0
       },
     }
-    this.setResetStatus = this.setResetStatus.bind(this);
-    this.playerChoice = this.playerChoice.bind(this);
-    this.tokenChoice = this.tokenChoice.bind(this);
   }
 
   setScore = (scoreObj) => {
