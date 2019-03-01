@@ -65,10 +65,8 @@ class PlayBoard extends Component {
     this.setState({ moveBoard: theMoveBoard });      
     setTimeout(() => {
       if (this.win()) {
-        // TODO ADD OVERLAY
         this.updateScore();
       } else if (this.tie()) {
-        // TODO ADD OVERLAY
       } 
     }, 1000);
   }
@@ -85,7 +83,6 @@ class PlayBoard extends Component {
   // Render overlay
   renderWinnerOverlay = (winner) => {
     // winner is the name of the winner - playerOne, playerTwo or computer
-    // add delay here
     console.log(winner, 'wins!')
   }
 
@@ -164,7 +161,6 @@ class PlayBoard extends Component {
     // Check for a win & tie
     setTimeout(() => {
       if (this.win()) {
-        // TODO ADD OVERLAY
         this.updateScore();
       } else if (this.tie()) {
         // ADD OVERLAY
