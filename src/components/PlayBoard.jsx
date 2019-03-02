@@ -41,7 +41,6 @@ class PlayBoard extends Component {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win() && !this.tie()) { 
           this.setState({ turn: 'computer', turnCount: turnCount += 1 }) 
-          // Raise turn flag
           onSetTheTurnState('computer');
           setTimeout(() => {
             this.computerMove();
@@ -52,12 +51,10 @@ class PlayBoard extends Component {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win()) { this.setState({ turn: 'playerTwo', turnCount: turnCount += 1 }) };
-        // Raise turn flag
         onSetTheTurnState('playerTwo');
       } else if(this.state.turn === 'playerTwo' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerTwoToken;
         if (!this.win()) { this.setState({ turn: 'playerOne', turnCount: turnCount += 1  }) };
-        // Raise turn flag
         onSetTheTurnState('playerOne');
       }
     }
@@ -82,7 +79,6 @@ class PlayBoard extends Component {
 
   // Render overlay
   renderWinnerOverlay = (winner) => {
-    // winner is the name of the winner - playerOne, playerTwo or computer
     console.log(winner, 'wins!')
   }
 
