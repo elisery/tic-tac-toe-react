@@ -41,6 +41,7 @@ class Board extends Component {
   }
 
   setResetStatus = () => {
+    const { resetFlag } = this.props;
     this.setState({ 
       gameType: '',
       playerOneToken: '', 
@@ -50,8 +51,9 @@ class Board extends Component {
         playerOne: 0, 
         playerTwo: 0, 
         computerPlayer: 0
-      } 
+      },
     });
+    resetFlag(null);
   }
 
   render() {

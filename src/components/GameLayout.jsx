@@ -20,7 +20,7 @@ class GameLayout extends Component {
     return(
       <div className="container">
         <Status theTurn={turn} />
-        <Board setTurnState={this.setTurn} />
+        <Board setTurnState={this.setTurn} resetFlag={this.setTurn} />
       </div>
     )
   }
