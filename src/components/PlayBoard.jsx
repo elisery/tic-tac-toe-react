@@ -85,6 +85,14 @@ class PlayBoard extends Component {
   renderTieOverlay = () => {
     console.log('it\'s a tie');
   }
+
+  renderOverlayBoard = (winnerType) => {
+    return (
+      <div className="chalkboard">
+        {/* TODO: style overlay here */}
+      </div>
+    );
+  }
  
   computerMove = () => {
     const { computerToken, playerOneToken } = this.state;
