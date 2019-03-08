@@ -88,8 +88,8 @@ class PlayBoard extends Component {
 
   renderOverlayBoard = (winnerType) => {
     return (
-      <div className="chalkboard">
-        {/* TODO: style overlay here */}
+      <div className="overlay">
+        
       </div>
     );
   }
@@ -167,7 +167,7 @@ class PlayBoard extends Component {
       if (this.win()) {
         this.updateScore();
       } else if (this.tie()) {
-        // ADD OVERLAY
+        // TODO: ADD OVERLAY
       } else {
         this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
         // Raise turn flag
@@ -228,21 +228,6 @@ class PlayBoard extends Component {
   }
 
   updateScore = () => {
-     /*
-  - Board is PARENT to Screens & Settings
-  - Screens is parallel to Settings
-  - Playboard is within Screens
-  - Scoreboard is within Settings
-  
-  - Board holds state of score 
-  - Board has a function that sets the state of the score
-  - Board passes this function this.setScore to Screens then onSetScore to Playboard as props
-    - Playboard will call function onSetThisScore when the score is decided
-  - Board also passes the state of the score to Screens, Playboard, Settings & Scoreboard
-  PlayBoard => Screens => Board 
-  Board => Settings => Scoreboard
-  */
-
     const { onSetScore, scores } = this.props;
     const winner = this.state.turn;
     // Make copy of scores
@@ -276,16 +261,17 @@ class PlayBoard extends Component {
       turn: 'playerOne',
       turnCount: 0
     }); 
-    // REMOVE OVERLAY
+    // TODO: REMOVE OVERLAY
     // Reset turn flag
     onSetTheTurnState(turn);
   }
 
   render() {
     const { moveBoard } = this.state;
-
-    return(
-      <div className="play-area chalkboard">
+    const testOverlay = true;
+    return (
+      this.renderOverlayBoard()
+      || (<div className="play-area chalkboard">
         <div id="row-1" className="row bottom-border">
           <div onClick={() => this.move(0)} id="0" className="top-right-border square">
             <Square val={moveBoard[0]} />
@@ -319,7 +305,7 @@ class PlayBoard extends Component {
             <Square val={moveBoard[8]}/>
           </div>
         </div>
-      </div>
+      </div>)
     )
   }
 }
