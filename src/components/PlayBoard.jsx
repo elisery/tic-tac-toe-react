@@ -86,7 +86,7 @@ class PlayBoard extends Component {
     console.log('it\'s a tie');
   }
 
-  renderOverlayBoard = (winnerType) => {
+  renderOverlayBoard = () => {
     return (
       <div className="overlay">
         
@@ -270,8 +270,8 @@ class PlayBoard extends Component {
     const { moveBoard } = this.state;
     const testOverlay = true;
     return (
-      this.renderOverlayBoard()
-      && (<div className="play-area chalkboard">
+      this.renderOverlayBoard() &&
+      <div className="play-area chalkboard">
         <div id="row-1" className="row bottom-border">
           <div onClick={() => this.move(0)} id="0" className="top-right-border square">
             <Square val={moveBoard[0]} />
@@ -305,7 +305,7 @@ class PlayBoard extends Component {
             <Square val={moveBoard[8]}/>
           </div>
         </div>
-      </div>)
+      </div>
     )
   }
 }
