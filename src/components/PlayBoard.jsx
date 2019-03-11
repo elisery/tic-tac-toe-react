@@ -268,10 +268,9 @@ class PlayBoard extends Component {
 
   render() {
     const { moveBoard } = this.state;
-    const testOverlay = true;
     return (
-      this.renderOverlayBoard() &&
       <div className="play-area chalkboard">
+      {this.renderOverlayBoard()}
         <div id="row-1" className="row bottom-border">
           <div onClick={() => this.move(0)} id="0" className="top-right-border square">
             <Square val={moveBoard[0]} />
