@@ -21,7 +21,8 @@ class PlayBoard extends Component {
       ],
       turn: 'playerOne',
       winningArr: [],
-      turnCount: 0
+      turnCount: 0,
+      overlay: false,
     }
   }
 
@@ -267,7 +268,7 @@ class PlayBoard extends Component {
   }
 
   render() {
-    const { moveBoard } = this.state;
+    const { moveBoard, overlay } = this.state;
     return (
       <div className="play-area chalkboard">
       {this.renderOverlayBoard()}
