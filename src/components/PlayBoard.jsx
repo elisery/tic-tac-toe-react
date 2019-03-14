@@ -88,6 +88,7 @@ class PlayBoard extends Component {
   }
 
   renderOverlayBoard = () => {
+    this.setState({ overlay: true });
     return (
       <div className="overlay">
         
@@ -271,7 +272,7 @@ class PlayBoard extends Component {
     const { moveBoard, overlay } = this.state;
     return (
       <div className="play-area chalkboard">
-      {this.renderOverlayBoard()}
+        {overlay && this.renderOverlayBoard()}
         <div id="row-1" className="row bottom-border">
           <div onClick={() => this.move(0)} id="0" className="top-right-border square">
             <Square val={moveBoard[0]} />
