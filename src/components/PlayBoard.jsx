@@ -169,7 +169,6 @@ class PlayBoard extends Component {
       if (this.win()) {
         this.updateScore();
       } else if (this.tie()) {
-        // TODO: ADD OVERLAY
       } else {
         this.setState({ moveBoard: mBoard, turnCount: turnCount += 1, turn: 'playerOne' });
         // Raise turn flag
@@ -201,6 +200,7 @@ class PlayBoard extends Component {
   }
 
   win = () => {
+    // TODO: ADD OVERLAY
     let win = false;
     const moveBoard = this.state.moveBoard;
     this.state.winningCombos.forEach(wc => {
@@ -218,7 +218,7 @@ class PlayBoard extends Component {
 
   tie = () => {
     if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
-
+      // TODO: Add overlay
       setTimeout(() => {
         this.renderTieOverlay();
         this.reset();
