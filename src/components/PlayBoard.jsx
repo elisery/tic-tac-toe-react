@@ -84,7 +84,7 @@ class PlayBoard extends Component {
   }
 
   renderTieOverlay = () => {
-    console.log('it\'s a tie');
+    this.setState({ overlay: true });
   }
 
   renderOverlayBoard = () => {
