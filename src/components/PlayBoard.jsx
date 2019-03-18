@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import Square from "./Square";
 
+const winningCombos = [
+  [0, 1, 2], [3, 4, 5], [6, 7, 8],
+  [0, 3, 6], [1, 4, 7], [2, 5, 8],
+  [0, 4, 8], [2, 4, 6]
+];
+
 class PlayBoard extends Component {
   constructor(props) {
     super(props); 
@@ -13,11 +19,6 @@ class PlayBoard extends Component {
         ' ', ' ', ' ',
         ' ', ' ', ' ',
         ' ', ' ', ' '
-      ],
-      winningCombos: [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8],
-        [0, 3, 6], [1, 4, 7], [2, 5, 8],
-        [0, 4, 8], [2, 4, 6]
       ],
       turn: 'playerOne',
       winningArr: [],
@@ -106,7 +107,7 @@ class PlayBoard extends Component {
 
     // If playerOne is not close to winning
     if (arrayToBlock === undefined) {
-      this.state.winningCombos.forEach(wc => {
+      winningCombos.forEach(wc => {
         let index1 = wc[0];
         let index2 = wc[1];
         let index3 = wc[2];
@@ -182,7 +183,7 @@ class PlayBoard extends Component {
     let blockCombo;
     const mBoard = this.state.moveBoard;
     // If playerOne occupies two squares in a winning combo return that combo
-    this.state.winningCombos.forEach(wc => {
+    winningCombos.forEach(wc => {
       let counter = 0;
       wc.forEach(i => {
         if (mBoard[i] === this.state.playerOneToken) {
@@ -203,7 +204,7 @@ class PlayBoard extends Component {
     // TODO: ADD OVERLAY
     let win = false;
     const moveBoard = this.state.moveBoard;
-    this.state.winningCombos.forEach(wc => {
+    winningCombos.forEach(wc => {
       const index1 = wc[0];
       const index2 = wc[1];
       const index3 = wc[2];
