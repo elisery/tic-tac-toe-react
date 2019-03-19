@@ -88,11 +88,28 @@ class PlayBoard extends Component {
     this.setState({ overlay: true });
   }
 
-  renderOverlayBoard = () => {
+  renderOverlayBoard = (winner) => {
     this.setState({ overlay: true });
+    let overlayText = '';
+
+    switch(winner) {
+      case ('playerOne'):
+        overlayText = 'Player One Wins';
+        break;
+      case ('playerTwo'):
+        overlayText = 'Player Two Wins';
+        break;
+      case ('Computer'):
+        overlayText = 'Computer Wins';
+        break;
+      default: 
+        overlayText = 'Tie Game';
+        break;
+    }
+    
     return (
       <div className="overlay">
-        
+        {overlayText}!
       </div>
     );
   }
