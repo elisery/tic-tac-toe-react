@@ -109,7 +109,7 @@ class PlayBoard extends Component {
     
     return (
       <div className="overlay">
-        {overlayText}!
+        <p className={winner}>{overlayText}!</p>
       </div>
     );
   }
