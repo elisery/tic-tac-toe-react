@@ -80,14 +80,6 @@ class PlayBoard extends Component {
   }
 
   // Render overlay
-  renderWinnerOverlay = (winner) => {
-    console.log(winner, 'wins!')
-  }
-
-  renderTieOverlay = () => {
-    this.setState({ overlay: true });
-  }
-
   renderOverlayBoard = (winner) => {
     this.setState({ overlay: true });
     let overlayText = '';
