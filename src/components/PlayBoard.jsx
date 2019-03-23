@@ -221,6 +221,10 @@ class PlayBoard extends Component {
         (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
         this.setState({ winningArr: wc });
+        setTimeout(() => {
+          this.setState({ overlay: true });
+        }, 1000);
+        this.setState({ overlay: false }); 
       }
     });
     return win;
@@ -230,7 +234,6 @@ class PlayBoard extends Component {
     if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
       // TODO: Add overlay
       setTimeout(() => {
-        this.renderTieOverlay();
         this.reset();
       }, 1000);
       return true;
