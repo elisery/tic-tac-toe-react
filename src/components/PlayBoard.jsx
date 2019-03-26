@@ -81,9 +81,7 @@ class PlayBoard extends Component {
 
   // Render overlay
   renderOverlayBoard = (winner) => {
-    this.setState({ overlay: true });
     let overlayText = '';
-
     switch(winner) {
       case ('playerOne'):
         overlayText = 'Player One Wins';
@@ -220,7 +218,7 @@ class PlayBoard extends Component {
       if ((moveBoard[index1] === 'X' && moveBoard[index2] === 'X' && moveBoard[index3] === 'X') || 
         (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
-        this.setState({ winningArr: wc });
+        this.setState({ winningArr: wc, overlay: true });
       }
     });
     return win;
@@ -254,7 +252,6 @@ class PlayBoard extends Component {
     onSetScore(theScores);
     // Reset board with delay
     setTimeout(() => {
-      this.renderWinnerOverlay(winner);
       this.reset();
     }, 1000); 
   }
