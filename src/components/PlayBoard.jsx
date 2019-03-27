@@ -219,6 +219,9 @@ class PlayBoard extends Component {
         (moveBoard[index1] === 'O' && moveBoard[index2] === 'O' && moveBoard[index3] === 'O')) {
         win = true;
         this.setState({ winningArr: wc, overlay: true });
+        setTimeout(() => {
+          this.setState({ overlay: false });
+        }, 1000);
       }
     });
     return win;
