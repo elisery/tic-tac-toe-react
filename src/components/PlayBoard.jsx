@@ -89,7 +89,7 @@ class PlayBoard extends Component {
       case ('playerTwo'):
         overlayText = 'Player Two Wins';
         break;
-      case ('Computer'):
+      case ('computer'):
         overlayText = 'Computer Wins';
         break;
       default: 
