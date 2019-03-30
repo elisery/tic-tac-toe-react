@@ -82,6 +82,7 @@ class PlayBoard extends Component {
   // Render overlay
   renderOverlayBoard = (winner) => {
     let overlayText = '';
+    const tie = 'tie'
     switch(winner) {
       case ('playerOne'):
         overlayText = 'Player One Wins';
@@ -99,7 +100,7 @@ class PlayBoard extends Component {
     
     return (
       <div className="overlay">
-        <p className={winner}>{overlayText}!</p>
+        <p className={winner !== '' ? winner : tie}>{overlayText}!</p>
       </div>
     );
   }
@@ -272,7 +273,6 @@ class PlayBoard extends Component {
       turn: 'playerOne',
       turnCount: 0
     }); 
-    // TODO: REMOVE OVERLAY
     // Reset turn flag
     onSetTheTurnState(turn);
   }
