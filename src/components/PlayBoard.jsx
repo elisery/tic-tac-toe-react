@@ -24,6 +24,7 @@ class PlayBoard extends Component {
       winningArr: [],
       turnCount: 0,
       overlay: false,
+      tie: false,
     }
   }
 
@@ -81,26 +82,30 @@ class PlayBoard extends Component {
 
   // Render overlay
   renderOverlayBoard = (winner) => {
+    const { tie } = this.state;
     let overlayText = '';
-    const tie = 'tie'
-    switch(winner) {
-      case ('playerOne'):
-        overlayText = 'Player One Wins';
-        break;
-      case ('playerTwo'):
-        overlayText = 'Player Two Wins';
-        break;
-      case ('computer'):
-        overlayText = 'Computer Wins';
-        break;
-      default: 
-        overlayText = 'Tie Game';
-        break;
+    if (tie) {
+      overlayText = 'Tie Game';
+    } else {
+      switch(winner) {
+        case ('playerOne'):
+          overlayText = 'Player One Wins';
+          break;
+        case ('playerTwo'):
+          overlayText = 'Player Two Wins';
+          break;
+        case ('computer'):
+          overlayText = 'Computer Wins';
+          break;
+        default: 
+          overlayText = '';
+          break;
+      }
     }
     
     return (
       <div className="overlay">
-        <p className={winner !== '' ? winner : tie}>{overlayText}!</p>
+        <p className={tie ? 'tie' : winner}>{overlayText}!</p>
       </div>
     );
   }
@@ -209,7 +214,6 @@ class PlayBoard extends Component {
   }
 
   win = () => {
-    // TODO: ADD OVERLAY
     let win = false;
     const moveBoard = this.state.moveBoard;
     winningCombos.forEach(wc => {
@@ -230,8 +234,9 @@ class PlayBoard extends Component {
 
   tie = () => {
     if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
-      // TODO: Add overlay
+      this.setState({ tie: true, overlay: true });
       setTimeout(() => {
+        this.setState({ overlay: false });
         this.reset();
       }, 1000);
       return true;
@@ -258,7 +263,7 @@ class PlayBoard extends Component {
     setTimeout(() => {
       this.reset();
     }, 1000); 
-  }
+  } 
 
   reset = () => {
     const { turn } = this.state;
@@ -271,7 +276,8 @@ class PlayBoard extends Component {
       ' ', ' ', ' '
       ],
       turn: 'playerOne',
-      turnCount: 0
+      turnCount: 0,
+      tie: false,
     }); 
     // Reset turn flag
     onSetTheTurnState(turn);

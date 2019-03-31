@@ -9,7 +9,6 @@ class GameLayout extends Component {
       turn: '',
     }
   }
-// TODO: status has to recieve state/props of which player's turn it is
   setTurn = (turn) => {
     this.setState({ turn })
   }

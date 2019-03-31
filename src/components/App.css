@@ -231,9 +231,12 @@ button {
 
 .playerOne, .playerTwo, .computer, .tie {
   transform: rotate(-45deg);
+  font-size: 36px;
+}
+
+.playerOne, .playerTwo, .computer {
   margin-top: 125px;
   margin-left: 24px;
-  font-size: 36px;
 }
 
 .playerOne {
@@ -249,6 +252,8 @@ button {
 }
 
 .tie {
+  margin-top: 90px;
+  margin-left: 60px;
   color: chocolate;
 }
 

@@ -33,7 +33,7 @@ class Status extends Component {
 
     }
   }
-//TODO: reset on clicking 'reset' in settings
+
   renderFlag = () => {
     const { theTurn } = this.props;
     return (
