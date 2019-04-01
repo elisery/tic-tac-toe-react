@@ -15,17 +15,6 @@ const playerTurn = {
   },
 }
 
-/**
- * 1. gamelayout imports status (flag here)
- * 2. gamelayout also imports board
- * 3. board imports settings (reset button here)
- * 4. have state set in gamelayout with function setting it
- * 5. pass function as prop to board
- * 6. board imports the prop function and sets the state when the reset button clicked
- * 7. gamelayout sends this state to status
- * 8. status resets the flag
- * 
- */
 class Status extends Component {
   constructor(props) {
     super(props);
