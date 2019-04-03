@@ -176,7 +176,7 @@ class PlayBoard extends Component {
         }
       });
     }
-    // Update the moveBoard and turncount
+    // Update the moveBoard
     mBoard[computerIndex] = computerToken;
     // Check for a win & tie
     setTimeout(() => {
@@ -247,7 +247,7 @@ class PlayBoard extends Component {
 
   updateScore = () => {
     const { onSetScore, scores } = this.props;
-    const winner = this.state.turn;
+    const { winner } = this.state;
     // Make copy of scores
     const theScores = scores;
     if (winner === 'playerOne') {

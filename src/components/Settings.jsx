@@ -7,7 +7,6 @@ const Settings = props => {
     <div className="settings">
       <Scoreboard gameType={gameType} scores={scores} />
       <div className="controls">
-        {/* Reset flag */}
         <button onClick={() => onResetClick()} id="reset">Reset</button>
       </div>
     </div>
