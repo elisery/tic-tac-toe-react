@@ -115,8 +115,8 @@ class PlayBoard extends Component {
     const { onSetTheTurnState } = this.props;
     const arrayToBlock = this.closeToWin();
     const mBoard = this.state.moveBoard;
-    let computerIndex;
     let turnCount = this.state.turnCount;
+    let computerIndex;
 
     // If playerOne is not close to winning
     if (arrayToBlock === undefined) {
