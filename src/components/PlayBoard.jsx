@@ -193,15 +193,16 @@ class PlayBoard extends Component {
 
 
   closeToWin = () => {
+    const { playerOneToken, computerToken } = this.state;
     let blockCombo;
     const mBoard = this.state.moveBoard;
     // If playerOne occupies two squares in a winning combo return that combo
     winningCombos.forEach(wc => {
       let counter = 0;
       wc.forEach(i => {
-        if (mBoard[i] === this.state.playerOneToken) {
+        if (mBoard[i] === playerOneToken) {
           counter += 1;
-        } else if (mBoard[i] === this.state.computerToken) {
+        } else if (mBoard[i] === computerToken) {
           counter -= 1;
         }
       });
@@ -214,8 +215,8 @@ class PlayBoard extends Component {
   }
 
   win = () => {
+    const { moveBoard } = this.state;
     let win = false;
-    const moveBoard = this.state.moveBoard;
     winningCombos.forEach(wc => {
       const index1 = wc[0];
       const index2 = wc[1];
@@ -233,7 +234,8 @@ class PlayBoard extends Component {
   }
 
   tie = () => {
-    if (this.state.turnCount === 8 && !this.win('X') && !this.win('O')) {
+    const { turnCount } = this.state;
+    if (turnCount === 8 && !this.win('X') && !this.win('O')) {
       this.setState({ tie: true, overlay: true });
       setTimeout(() => {
         this.setState({ overlay: false });
