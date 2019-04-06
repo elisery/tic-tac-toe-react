@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const ChoosePlayer = props => {
   const { onChoiceClick = () => {} } = props;
   
@@ -15,7 +14,6 @@ const ChoosePlayer = props => {
       </div>
     </div>
   )
-  
 }
 
 export default ChoosePlayer;

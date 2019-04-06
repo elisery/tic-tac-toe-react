@@ -35,11 +35,12 @@ class PlayBoard extends Component {
   }
 
   move = (id) => {
+    const { gameType } = this.state;
     const theMoveBoard = this.state.moveBoard;
     let turnCount = this.state.turnCount;
     const { onSetTheTurnState } = this.props;
 
-    if (this.state.gameType === '1-player') {
+    if (gameType === '1-player') {
       if (this.state.turn === 'playerOne' && this.isEmpty(id)) {
         theMoveBoard[id] = this.state.playerOneToken;
         if (!this.win() && !this.tie()) { 

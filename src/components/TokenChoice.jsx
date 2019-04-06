@@ -18,7 +18,6 @@ const TokenChoice = props =>{
       </div>
     </div>
   )
-  
 }
 
 export default TokenChoice;

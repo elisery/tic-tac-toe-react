@@ -16,13 +16,6 @@ const playerTurn = {
 }
 
 class Status extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-  }
-
   renderFlag = () => {
     const { theTurn } = this.props;
     return (
