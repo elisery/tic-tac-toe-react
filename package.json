@@ -6,7 +6,7 @@
     "braces": "^3.0.2",
     "handlebars": "^4.1.2",
     "js-yaml": "^3.13.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.14",
     "lodash.template": "^4.5.0",
     "merge": "^1.2.1",
     "react": "^16.5.0",
